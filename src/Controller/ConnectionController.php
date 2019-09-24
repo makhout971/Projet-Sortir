@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -17,7 +18,13 @@ class ConnectionController extends Controller
         ]);
     }
 
-
+    /**
+     * @Route("/inscription", name="inscription")
+     */
+    public function addUser(EntityManagerInterface $em)
+    {
+        return $this->render();
+    }
 
 
 
