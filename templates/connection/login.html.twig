@@ -2,12 +2,18 @@
 
 
 {% block nav %}
-   {#TODO logo Sortir#}
-{% end block %}
+<img src="{{ asset('images/imgsortir.jpg') }}"/>
+{% endblock %}
 
 {% block body %}
-Identifiant : <input type="text" name="Identifiant">
-Mot de passe : <input type="text" name="Identifiant">
-{% end block %}
+    <fieldset>
+        <p>Identifiant : <input type="text" name="identifiant"></p>
+        <p>Mot de passe : <input type="text" name="motdepasse"></p>
+        <button type="submit">Submit</button>
+    </fieldset>
+
+
+
+{% endblock %}
 
 
