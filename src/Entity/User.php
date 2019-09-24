@@ -19,32 +19,32 @@ class User implements UserInterface
     private $id;
 
     /**
-     * @ORM\Column(type="string", lenght="30", nullable=false)
+     * @ORM\Column(type="string", length=30, nullable=false)
      */
     private $username;
 
     /**
-     * @ORM\Column(type="string", lenght="30", nullable=false)
+     * @ORM\Column(type="string", length=30, nullable=false)
      */
     private $nom;
 
     /**
-     * @ORM\Column(type="string", lenght="30", nullable=false)
+     * @ORM\Column(type="string", length=30, nullable=false)
      */
     private $prenom;
 
     /**
-     * @ORM\Column(type="string", lenght="15")
+     * @ORM\Column(type="string", length=15)
      */
     private $tel;
 
     /**
-     * @ORM\Column(type="string", lenght="20", nullable=false)
+     * @ORM\Column(type="string", length=20, nullable=false)
      */
     private $email;
 
     /**
-     * @ORM\Column(type="string", lenght="20", nullable=false)
+     * @ORM\Column(type="string", length=20, nullable=false)
      */
     private $password;
 
