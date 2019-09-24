@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\ProfilType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -103,9 +104,11 @@ class ConnectionController extends Controller
      * @Route("/monProfil", name="user_profil")
      */
     public function updateProfil(){
-        $userRepo = $this->get->getDoctrine()->getRepository(User::class);
-        $u = $this->get('security.context')->getToken()->getUser();
+        $userRepo = $this->getDoctrine()->getRepository(User::class);
+        $u = $this->getUser();
         $user = $userRepo -> find($u.getId());
+
+        $profilForm = $this->createForm(ProfilType::class, $u);
 
 
         // Récupérer un user en DB
