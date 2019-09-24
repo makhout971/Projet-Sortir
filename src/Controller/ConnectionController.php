@@ -159,7 +159,10 @@ class ConnectionController extends Controller
     public function updateProfil(Request $request,
                                  UserPasswordEncoderInterface $passwordEncoder,
                                  EntityManagerInterface $em){
+            
 
+        return $this->render("user/profil.html.twig",[
+//            "user" => $u,
         //  $userRepo = $this->getDoctrine()->getRepository(User::class);
 //
 //        $u = $this->getUser();
@@ -185,8 +188,7 @@ class ConnectionController extends Controller
 
         // Récupérer un user en DB
 
-        return $this->render("user/profil.html.twig",[
-//            "user" => $u,
+
 
 
         ]);
