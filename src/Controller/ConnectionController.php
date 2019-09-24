@@ -154,7 +154,7 @@ class ConnectionController extends Controller
         // $user = $userRepo -> find($u.getId());
 
         $profilForm = $this->createForm(ProfilType::class, $u);
-        
+
         // $user = $this->get('security.context')->getToken()->getUser();
 
 
