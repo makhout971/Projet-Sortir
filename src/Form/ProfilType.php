@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\User;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -16,12 +17,13 @@ class ProfilType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
-
+     
         $builder
-            ->add('pseudo', TextType::class,[
+            ->add('username', TextType::class,[
                 'label' => 'Pseudo',
                 'attr' => [
                     'readOnly' => 'true'
+
                 ]
             ])
             ->add('prenom', TextType::class,[
@@ -42,13 +44,13 @@ class ProfilType extends AbstractType
                     'readOnly' => 'true'
                 ]
             ])
-            ->add('mail', EmailType::class,[
+            ->add('email', EmailType::class,[
                 'label' => 'Email',
                 'attr' => [
                     'readOnly' => 'true'
                 ]
             ])
-            ->add('mdp', PasswordType::class,[
+            ->add('password', PasswordType::class,[
                 'label' => 'Mot de passe',
                 'attr' => [
                     'readOnly' => 'true'

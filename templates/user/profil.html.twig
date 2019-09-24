@@ -2,17 +2,27 @@
 
 {% block body %}
 
+        {% set test = false %}
 
-{#
-document.getElementById("name").readOnly = true;
+    {{ form_start(profilForm) }}
+    {{ form_widget(profilForm) }}
 
-and unset:
-
-document.getElementById("name").readOnly = false;
-
-#}
+    <input type="submit" value="Validate" id="validate"  >
+    {#    element.removeAttribute(nomAttribut);  #}
 
 
 
+    {{ form_end(profilForm) }}
 
-{% end block %}
+    {#
+    document.getElementById("name").readOnly = true;
+
+    and unset:
+
+    document.getElementById("name").readOnly = false;
+
+    #}
+
+
+
+{% endblock %}
