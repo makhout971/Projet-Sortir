@@ -9,9 +9,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class ConnectionController extends Controller
 {
     /**
-     * @Route("/connection", name="connection")
+     * @Route("/home", name="connection")
      */
-    public function index()
+    public function connection()
     {
         return $this->render('connection/home.html.twig', [
             'controller_name' => 'ConnectionController',
