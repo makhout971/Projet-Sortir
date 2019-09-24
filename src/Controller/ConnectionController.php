@@ -8,14 +8,18 @@ use Symfony\Component\Routing\Annotation\Route;
 class ConnectionController extends Controller
 {
     /**
-     * @Route("/home", name="connection")
+     * @Route("/home", name="home")
      */
-    public function connection()
+    public function home()
     {
         return $this->render('connection/home.html.twig', [
             'controller_name' => 'ConnectionController',
         ]);
     }
+
+    /**
+     * @Route("/login", name"login")
+     */
 
 
 
