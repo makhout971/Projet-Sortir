@@ -147,24 +147,39 @@ class ConnectionController extends Controller
     /**
      * @Route("/monProfil", name="user_profil")
      */
-    public function updateProfil(){
+    public function updateProfil(Request $request,
+                                 UserPasswordEncoderInterface $passwordEncoder,
+                                 EntityManagerInterface $em){
 
         //  $userRepo = $this->getDoctrine()->getRepository(User::class);
-        $u = $this->getUser();
-        // $user = $userRepo -> find($u.getId());
-
-        $profilForm = $this->createForm(ProfilType::class, $u);
-
-        // $user = $this->get('security.context')->getToken()->getUser();
-
+//
+//        $u = $this->getUser();
+//        // $user = $userRepo -> find($u.getId());
+//
+//        $profilForm = $this->createForm(ProfilType::class, $u);
+//
+//        $profilForm->handleRequest($request);
+//        if ($profilForm->isSubmitted() && $profilForm->isValid() )
+//        {
+//        //    $password = $passwordEncoder->encodePassword($u, $u->getPassword());
+//        //    $u->setPassword($password);
+//            $u->setPrenom($request->request->get('prenom'));
+//            $u->setNom($request->request->get('nom'));
+//            $u->setTelephone($request->request->get('tel'));
+//            $u->setEmail($request->request->get('email'));
+////            L'user ne change jamais de site de rattachement
+//            $em->persist($u);
+//            $em->flush();
+//        }
 
 
 
         // Récupérer un user en DB
 
         return $this->render("user/profil.html.twig",[
-            "user" => $u,
-            "profilForm" => $profilForm->createView()
+//            "user" => $u,
+
+
         ]);
 
 

@@ -2,17 +2,44 @@
 
 {% block body %}
 
-        {% set test = false %}
+    <script src="{{ asset('js/profil.js') }}"></script>
 
-    {{ form_start(profilForm) }}
-    {{ form_widget(profilForm) }}
+{#    {{ form_start(profilForm) }}#}
+{#    {{ form_widget(profilForm) }}#}
+<form action="{{ path("user_profil") }}" method="post">
+    <label>Pseudo :</label>
+    <input type="text" readonly value=""> {# {{ user.username }}#}
+    <br></br>
 
-    <input type="submit" value="Validate" id="validate"  >
-    {#    element.removeAttribute(nomAttribut);  #}
+    <label>Prenom :</label>
+    <input type="text"  value=""> {# {{ user.prenom }}#}
+    <br></br>
+
+    <label>Nom :</label>
+    <input type="text"  value=""> {# {{ user.nom }}#}
+    <br></br>
+
+    <label>Email :</label>
+    <input type="email"  value=""> {# {{ user.email }}#}
+    <br></br>
+
+    <label>Telephone :</label>
+    <input type="tel"  value=""> {# {{ user.telephone }}#}
+    <br></br>
+
+    <label>Mot de passe :</label>
+    <input type="password"  value=""> {# {{ user.password }}#}
+    <br></br>
 
 
 
-    {{ form_end(profilForm) }}
+
+    <input type="submit" value="Valider" id="validate" hidden >
+
+
+
+</form>
+{#   {{ form_end(profilForm) }}#}
 
     {#
     document.getElementById("name").readOnly = true;
@@ -22,6 +49,9 @@
     document.getElementById("name").readOnly = false;
 
     #}
+
+
+
 
 
 

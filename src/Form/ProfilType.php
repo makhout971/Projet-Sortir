@@ -17,7 +17,7 @@ class ProfilType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
-     
+
         $builder
             ->add('username', TextType::class,[
                 'label' => 'Pseudo',
@@ -56,18 +56,18 @@ class ProfilType extends AbstractType
                     'readOnly' => 'true'
                 ]
             ])
-            ->add('ville', ChoiceType::class,[
-                'label' => 'Ville de rattachement',
-                'choices' => [
-                    'Saint-Herblain' => 'Saint-Herblain',
-                    'Chartres de Bretagne' => 'Chartres de Bretagne',
-                    'La Roche sur Yon' => 'La Roche sur Yon',
-                    'Niort' => 'Niort',
-                ],
-                'attr' => [
-                    'readOnly' => 'true'
-                ]
-            ])
+//            ->add('ville', ChoiceType::class,[
+//                'label' => 'Ville de rattachement',
+//                'choices' => [
+//                    'Saint-Herblain' => 'Saint-Herblain',
+//                    'Chartres de Bretagne' => 'Chartres de Bretagne',
+//                    'La Roche sur Yon' => 'La Roche sur Yon',
+//                    'Niort' => 'Niort',
+//                ],
+//                'attr' => [
+//                    'readOnly' => 'true'
+//                ]
+//            ])
         ;
     }
 
