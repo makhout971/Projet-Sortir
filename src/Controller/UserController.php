@@ -10,11 +10,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class UserController extends Controller
 {
     /**
-     * @Route("/", name="user_home")
+     * @Route("/",  name="user_home")
      */
     public function home()
     {
@@ -159,10 +160,12 @@ class UserController extends Controller
      */
     public function updateProfil(Request $request,
                                  UserPasswordEncoderInterface $passwordEncoder,
-                                 EntityManagerInterface $em){
+                                 EntityManagerInterface $em,
+                                 UserInterface $test){
         $userRepo = $this->getDoctrine()->getRepository(User::class);
                 $u = $this->getUser();
-        $user = $userRepo -> find($u.getUsername());
+                $test->getUsername();
+        $user = $userRepo -> findById($u->getId());
 
 
         if (isset($_POST['validate']) && $_POST['validate'] != null)
@@ -183,44 +186,27 @@ class UserController extends Controller
                 $user->setEmail(filter_var($_POST['mail'],FILTER_SANITIZE_EMAIL));
                 $user->setPassword(filter_var($_POST['password'],FILTER_SANITIZE_STRING));
                 $hased = $passwordEncoder->encodePassword($user, $user->getPassword());
+
                 $em->persist($user);
                 $em->flush();
+
+                $this->get('session')->getFlashBag()->add('reussi', 'Modification réussie !');
+
+
+
             }
-        }
 
-
-        // if ( $request->request->get(''))
-        return $this->render("user/profil.html.twig",[
-//            "user" => $u,
-            //  $userRepo = $this->getDoctrine()->getRepository(User::class);
+            return $this->render("user/profil.html.twig",[
 //
-//
-//        // $user = $userRepo -> find($u.getUsername());
-//
-//        $profilForm = $this->createForm(ProfilType::class, $u);
-//
-//        $profilForm->handleRequest($request);
-//        if ($profilForm->isSubmitted() && $profilForm->isValid() )
-//        {
-//        //    $password = $passwordEncoder->encodePassword($u, $u->getPassword());
-//        //    $u->setPassword($password);
-//            $u->setPrenom($request->request->get('prenom'));
-//            $u->setNom($request->request->get('nom'));
-//            $u->setTelephone($request->request->get('tel'));
-//            $u->setEmail($request->request->get('email'));
-////            L'user ne change jamais de site de rattachement
-//            $em->persist($u);
-//            $em->flush();
 //        }
 
 
+            ]);
+        }
 
 
 
 
-
-
-        ]);
 
 
 
