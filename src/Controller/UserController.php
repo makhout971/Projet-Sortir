@@ -161,15 +161,16 @@ class UserController extends Controller
     public function updateProfil(Request $request,
                                  UserPasswordEncoderInterface $passwordEncoder,
                                  EntityManagerInterface $em
-                                 ){
-        $userRepo = $this->getDoctrine()->getRepository(User::class);
-                $u = $this->getUser();
-
-        $user = $userRepo -> find($u->getId());
+                                 )
+    {
 
 
         if (isset($_POST['validate']) && $_POST['validate'] != null)
         {
+            $userRepo = $this->getDoctrine()->getRepository(User::class);
+            $u = $this->getUser();
+
+            $user = $userRepo -> find($u->getId());
             if (!empty($_POST['prenom'])
                 &&
                 !empty( $_POST['nom'])
@@ -193,20 +194,10 @@ class UserController extends Controller
                 $this->get('session')->getFlashBag()->add('reussi', 'Modification réussie !');
 
 
-
             }
-
-            return $this->render("user/profil.html.twig",[
-//
-//        }
-
-
-            ]);
         }
-
-
-
-
+            return $this->render("user/profil.html.twig",[
+            ]);
 
 
 
