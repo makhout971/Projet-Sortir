@@ -10,7 +10,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class SortieType extends AbstractType
-{sc
+{
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
