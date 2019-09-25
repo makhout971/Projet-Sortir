@@ -4,19 +4,26 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
+ * @UniqueEntity(fields="username")
  * @ORM\Table(name="users")
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
 class User implements UserInterface
 {
+
+
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
     private $id;
+
+    private static $nombreTotalInscrits;
 
     /**
      * @ORM\Column(type="string", length=30, nullable=false)
@@ -248,6 +255,8 @@ class User implements UserInterface
     {
         $this->admin = 0;
         $this->actif = 0;
+        $this.self::$nombreTotalInscrits++;
+
     }
 
 }
