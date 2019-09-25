@@ -17,9 +17,7 @@ security:
                 check_path: login
                 default_target_path: user_home
             logout_on_user_change: true
-            guard:
-                authenticators:
-                    - App\Security\LoginFormAuthenticator
+
             logout:
                 path: app_logout
                 # where to redirect after logout

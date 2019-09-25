@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Form\ProfilType;
 use App\Form\RegisterType;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -26,6 +27,7 @@ class UserController extends Controller
 
     /**
      * @Route("/login", name="user_login")
+     * @Template()
      */
     public function login()
     {
