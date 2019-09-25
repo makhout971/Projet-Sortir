@@ -10,12 +10,6 @@ use Doctrine\ORM\Mapping as ORM;
 class Sortie
 {
 
-    public function __construct()
-    {
-
-        $this.self::$nombreTotalSorties++;
-
-    }
 
     /**
      * @ORM\Id()
@@ -24,10 +18,6 @@ class Sortie
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private static $nombreTotalSorties;
 
     /**
      * @ORM\Column(type="string")

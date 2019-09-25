@@ -1,3 +1,41 @@
-body {
+#body {
     background-color: beige;
+}
+
+#header
+{
+    background-color: lightblue;
+    left: 0;
+    right: 0;
+
+}
+
+#footer
+{
+    background-color: lightblue;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    text-align: center;
+}
+
+#nav
+{
+    padding: 0;
+    margin: 0;
+}
+
+#navUl
+{
+    display: inline;
+    list-style: none;
+}
+
+nav li
+{
+    display: inline-block;
+    margin: 0 60px;
+
 }
