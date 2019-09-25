@@ -15,7 +15,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class UserController extends Controller
 {
     /**
-     * @Route("/home",  name="user_home")
+     * @Route("/",  name="user_home")
      */
     public function home()
     {
