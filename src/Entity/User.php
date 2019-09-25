@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @UniqueEntity(fields="username")
@@ -25,16 +26,19 @@ class User implements UserInterface
 
 
     /**
+     * @Assert\NotBlank(message="Veuillez renseigner un pseudo")
      * @ORM\Column(type="string", length=30, nullable=false)
      */
     private $username;
 
     /**
+     * @Assert\NotBlank(message="Veuillez renseigner un nom")
      * @ORM\Column(type="string", length=30, nullable=false)
      */
     private $nom;
 
     /**
+     * @Assert\NotBlank(message="Veuillez renseigner un prenom")
      * @ORM\Column(type="string", length=30, nullable=false)
      */
     private $prenom;
@@ -45,11 +49,13 @@ class User implements UserInterface
     private $tel;
 
     /**
+     * @Assert\NotBlank(message="Veuillez renseigner un email")
      * @ORM\Column(type="string", length=20, nullable=false)
      */
     private $email;
 
     /**
+     * @Assert\NotBlank(message="Veuillez renseigner un mot de passe")
      * @ORM\Column(type="string", nullable=false)
      */
     private $password;
