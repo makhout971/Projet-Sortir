@@ -15,6 +15,7 @@ security:
             form_login:
                 login_path: login
                 check_path: login
+                default_target_path: user_home
             logout_on_user_change: true
             guard:
                 authenticators:
@@ -24,11 +25,14 @@ security:
                 # where to redirect after logout
                 # target: app_any_route
 
+
+
     encoders:
         App\Entity\User:
             algorithm: bcrypt
 
     access_control:
         - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path ^/monProfil, roles: IS_AUTHENTICATED_FULLY }
 
 

@@ -15,7 +15,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class UserController extends Controller
 {
     /**
-     * @Route("/",  name="user_home")
+     * @Route("/home",  name="user_home")
      */
     public function home()
     {
@@ -160,12 +160,12 @@ class UserController extends Controller
      */
     public function updateProfil(Request $request,
                                  UserPasswordEncoderInterface $passwordEncoder,
-                                 EntityManagerInterface $em,
-                                 UserInterface $test){
+                                 EntityManagerInterface $em
+                                 ){
         $userRepo = $this->getDoctrine()->getRepository(User::class);
                 $u = $this->getUser();
-                $test->getUsername();
-        $user = $userRepo -> findById($u->getId());
+
+        $user = $userRepo -> find($u->getId());
 
 
         if (isset($_POST['validate']) && $_POST['validate'] != null)
