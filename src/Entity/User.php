@@ -255,7 +255,7 @@ class User implements UserInterface
     {
         $this->admin = 0;
         $this->actif = 0;
-        $this.self::$nombreTotalInscrits++;
+        //$this.self::$nombreTotalInscrits++;
 
     }
 
