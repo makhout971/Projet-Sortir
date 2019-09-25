@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -17,14 +17,21 @@
 
 <body>
 
+<header>
+    <h1>Sortir.com</h1>
+    {% include ('inc/nav.html.twig') %}
+</header>
+
 {% block nav %}
 {% endblock %}
 
 {% block body %}
 {% endblock %}
 
-{% block footer %}
-{% endblock %}
+<footer>
+
+    &copy;{{ "now"|date("Y") }} Sortir.com
+</footer>
 
 </body>
 
