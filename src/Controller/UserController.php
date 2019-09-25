@@ -160,6 +160,10 @@ class UserController extends Controller
     public function updateProfil(Request $request,
                                  UserPasswordEncoderInterface $passwordEncoder,
                                  EntityManagerInterface $em){
+        $userRepo = $this->getDoctrine()->getRepository(User::class);
+                $u = $this->getUser();
+        $user = $userRepo -> find($u.getUsername());
+
 
         if (isset($_POST['validate']) && $_POST['validate'] != null)
         {
@@ -173,8 +177,14 @@ class UserController extends Controller
                 &&
                 !empty($_POST['mail'])
             ){
-
-
+                $user->setPrenom(filter_var($_POST['prenom'],FILTER_SANITIZE_STRING));
+                $user->setNom(filter_var($_POST['nom'],FILTER_SANITIZE_STRING));
+                $user->setTel(filter_var($_POST['tel'],FILTER_SANITIZE_STRING));
+                $user->setEmail(filter_var($_POST['mail'],FILTER_SANITIZE_EMAIL));
+                $user->setPassword(filter_var($_POST['password'],FILTER_SANITIZE_STRING));
+                $hased = $passwordEncoder->encodePassword($user, $user->getPassword());
+                $em->persist($user);
+                $em->flush();
             }
         }
 
@@ -184,8 +194,8 @@ class UserController extends Controller
 //            "user" => $u,
             //  $userRepo = $this->getDoctrine()->getRepository(User::class);
 //
-//        $u = $this->getUser();
-//        // $user = $userRepo -> find($u.getId());
+//
+//        // $user = $userRepo -> find($u.getUsername());
 //
 //        $profilForm = $this->createForm(ProfilType::class, $u);
 //
