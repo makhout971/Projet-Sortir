@@ -8,4 +8,5 @@
 /vendor/
 /.idea/
 /*.iml/
+/.env/
 ###< symfony/framework-bundle ###
