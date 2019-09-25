@@ -18,7 +18,6 @@ security:
                 default_target_path: user_home
 
             logout_on_user_change: true
-
             logout:
                 path: app_logout
                 # where to redirect after logout

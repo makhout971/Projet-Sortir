@@ -6,22 +6,12 @@
 {% endblock %}
 
 {% block body %}
-    <form method="post">
-        <label for="username">Identifiant :</label> <input type="text" name="_username" id="username" required>
-        <label for="password">Mot de passe :</label> <input type="text" name="_password" id="password" required>
-{#        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}#}
-{#        <a href="{{ path('connection_home')}}"><button type="submit">Submit</button></a>#}
+    <form method="post" action="./login">
+        <label for="username">Identifiant :</label> <input type="text" name="username" id="username" required>
+        <label for="password">Mot de passe :</label> <input type="text" name="password" id="password" required>
         <button type="submit">Submit</button>
     </form>
 {% endblock %}
 
-
-{#    <li><a href="{{ path('logout') }}">Logout</a></li>#}
-{#    <li><a href="{{ path('serie_add') }}">Add a serie !</a></li>#}
-{#{% else %}#}
-{#    <li><a href="{{ path('login') }}">Login</a></li>#}
-{#    <li><a href="{{ path('register') }}">Register</a></li>#}
-
-{#{% endif %}#}
 
 
