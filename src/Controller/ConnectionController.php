@@ -14,7 +14,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class ConnectionController extends Controller
 {
     /**
-     * @Route("/", name="home")
+     * @Route("/", name="connection_home")
      */
     public function home()
     {
@@ -24,13 +24,14 @@ class ConnectionController extends Controller
     }
 
     /**
-     * @Route("/login", name="login")
+     * @Route("/login", name="connection_login")
      */
     public function login()
     {
         return $this->render('connection/login.html.twig', [
         ]);
     }
+
 
 
 
