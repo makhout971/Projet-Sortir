@@ -11,12 +11,17 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User implements UserInterface
 {
+
+
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
     private $id;
+
+    private static $nombreTotalInscrits;
 
     /**
      * @ORM\Column(type="string", length=30, nullable=false)
@@ -248,6 +253,8 @@ class User implements UserInterface
     {
         $this->admin = 0;
         $this->actif = 0;
+        $this.self::$nombreTotalInscrits++;
+
     }
 
 }
