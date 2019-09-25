@@ -159,8 +159,26 @@ class ConnectionController extends Controller
     public function updateProfil(Request $request,
                                  UserPasswordEncoderInterface $passwordEncoder,
                                  EntityManagerInterface $em){
-            
 
+        if (isset($_POST['validate']) && $_POST['validate'] != null)
+        {
+            if (!empty($_POST['prenom'])
+                &&
+                !empty( $_POST['nom'])
+                &&
+                !empty($_POST['tel'])
+                &&
+                !empty( $_POST['password'])
+                &&
+                !empty($_POST['mail'])
+            ){
+                
+
+            }
+        }
+
+
+       // if ( $request->request->get(''))
         return $this->render("user/profil.html.twig",[
 //            "user" => $u,
         //  $userRepo = $this->getDoctrine()->getRepository(User::class);
@@ -186,7 +204,7 @@ class ConnectionController extends Controller
 
 
 
-        // Récupérer un user en DB
+
 
 
 

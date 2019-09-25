@@ -3,16 +3,17 @@
 {% block body %}
 
     <script src="{{ asset('js/profil.js') }}"></script>
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 
 {#    {{ form_start(profilForm) }}#}
 {#    {{ form_widget(profilForm) }}#}
-<form action="{{ path("user_profil") }}" method="post">
+<form action="{{ path("user_profil") }}" method="post" name="modifForm">
     <label>Pseudo :</label>
     <input type="text" readonly value="" required> {# {{ user.username }}#}
     <br></br>
 
     <label>Prenom :</label>
-    <input type="text"  value="" required> {# {{ user.prenom }}#}
+    <input type="text"  value="" required id="prenom" > {# {{ user.prenom }}#}
     <br></br>
 
     <label>Nom :</label>
@@ -20,21 +21,21 @@
     <br></br>
 
     <label>Email :</label>
-    <input type="email"  value="" required> {# {{ user.email }}#}
+    <input type="email"  value="" required name="nom"> {# {{ user.email }}#}
     <br></br>
 
     <label>Telephone :</label>
-    <input type="tel"  value="" required> {# {{ user.telephone }}#}
+    <input type="tel"  value="" required name="tel"> {# {{ user.telephone }}#}
     <br></br>
 
     <label>Mot de passe :</label>
-    <input type="password"  value="" required>
+    <input type="password"  value="" required name="password">
     <br></br>
 
+    <input type="button" value="Test" onclick="switchReadOnly()">
 
 
-
-    <input type="submit" value="Valider" id="validate"  >
+    <input type="submit" value="Valider" id="validate"  name="validate">
 
 
 
