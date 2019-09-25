@@ -160,6 +160,12 @@ class ConnectionController extends Controller
                                  UserPasswordEncoderInterface $passwordEncoder,
                                  EntityManagerInterface $em){
 
+        //  $userRepo = $this->getDoctrine()->getRepository(User::class);
+        //  $u = $this->getUser();
+        // $user = $userRepo -> find($u.getUsername());
+
+
+
         if (isset($_POST['validate']) && $_POST['validate'] != null)
         {
             if (!empty($_POST['prenom'])
@@ -172,7 +178,8 @@ class ConnectionController extends Controller
                 &&
                 !empty($_POST['mail'])
             ){
-                
+                $user->setPrenom(filter_var($_POST['prenom'],FILTER_SANITIZE_STRING));
+
 
             }
         }
@@ -181,10 +188,10 @@ class ConnectionController extends Controller
        // if ( $request->request->get(''))
         return $this->render("user/profil.html.twig",[
 //            "user" => $u,
-        //  $userRepo = $this->getDoctrine()->getRepository(User::class);
+
 //
-//        $u = $this->getUser();
-//        // $user = $userRepo -> find($u.getId());
+//
+//
 //
 //        $profilForm = $this->createForm(ProfilType::class, $u);
 //
