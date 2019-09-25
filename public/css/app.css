@@ -1,3 +1,22 @@
-body {
+#body {
     background-color: beige;
+}
+
+#header
+{
+    background-color: lightblue;
+    position: absolute;
+    left: 0;
+    right: 0;
+
+}
+
+#footer
+{
+    background-color: lightblue;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
 }
