@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class UserController extends Controller
 {
@@ -29,7 +30,7 @@ class UserController extends Controller
      * @Route("/login", name="user_login")
      * @Template()
      */
-    public function login()
+    public function login(AuthenticationUtils)
     {
         return $this->render('user/login.html.twig', [
         ]);
