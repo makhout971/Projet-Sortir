@@ -11,24 +11,24 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-class ConnectionController extends Controller
+class UserController extends Controller
 {
     /**
-     * @Route("/", name="connection_home")
+     * @Route("/", name="user_home")
      */
     public function home()
     {
-        return $this->render('connection/home.html.twig', [
-            'controller_name' => 'ConnectionController',
+        return $this->render('user/home.html.twig', [
+            'controller_name' => 'UserController',
         ]);
     }
 
     /**
-     * @Route("/login", name="connection_login")
+     * @Route("/login", name="user_login")
      */
     public function login()
     {
-        return $this->render('connection/login.html.twig', [
+        return $this->render('user/login.html.twig', [
         ]);
     }
 
@@ -173,16 +173,16 @@ class ConnectionController extends Controller
                 &&
                 !empty($_POST['mail'])
             ){
-                
+
 
             }
         }
 
 
-       // if ( $request->request->get(''))
+        // if ( $request->request->get(''))
         return $this->render("user/profil.html.twig",[
 //            "user" => $u,
-        //  $userRepo = $this->getDoctrine()->getRepository(User::class);
+            //  $userRepo = $this->getDoctrine()->getRepository(User::class);
 //
 //        $u = $this->getUser();
 //        // $user = $userRepo -> find($u.getId());
