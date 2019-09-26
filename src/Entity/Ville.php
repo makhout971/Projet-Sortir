@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -14,7 +15,7 @@ class Ville
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $idVille;
+    private $id;
 
     /**
      * @ORM\Column(type="string", length=50)
@@ -29,11 +30,39 @@ class Ville
     private $codePostal;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Lieu", mappedBy="ville")
+     */
+    private $lieux;
+
+    public function __construct()
+    {
+        $this->lieux = new ArrayCollection();
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getLieux()
+    {
+        return $this->lieux;
+    }
+
+    /**
+     * @param ArrayCollection $lieux
+     */
+    public function setLieux($lieux)
+    {
+        $this->lieux = $lieux;
+    }
+
+
+
+    /**
      * @return mixed
      */
-    public function getIdVille()
+    public function getId()
     {
-        return $this->idVille;
+        return $this->id;
     }
 
     /**

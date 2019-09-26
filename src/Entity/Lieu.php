@@ -14,7 +14,7 @@ class Lieu
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $idLieu;
+    private $id;
 
     /**
      * @ORM\Column(type="string", length=100)
@@ -27,11 +27,34 @@ class Lieu
     private $rue;
 
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Ville", inversedBy="lieux")
+     */
+    private $ville;
+
+    /**
      * @return mixed
      */
-    public function getIdLieu()
+    public function getVille()
     {
-        return $this->idLieu;
+        return $this->ville;
+    }
+
+    /**
+     * @param mixed $ville
+     */
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
+    }
+
+
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
 
