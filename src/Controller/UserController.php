@@ -200,14 +200,16 @@ class UserController extends Controller
                 &&
                 !empty($_POST['mail'])
             ){
-                $user->setPrenom(filter_var($_POST['prenom'],FILTER_SANITIZE_STRING));
-                $user->setNom(filter_var($_POST['nom'],FILTER_SANITIZE_STRING));
+                $prename = filter_var($_POST['prenom'],FILTER_SANITIZE_STRING);
+                $user->setPrenom($prename);
+                $name = filter_var($_POST['nom'],FILTER_SANITIZE_STRING);
+                $user->setNom($name);
                 $user->setTel(filter_var($_POST['tel'],FILTER_SANITIZE_STRING));
                 $user->setEmail(filter_var($_POST['mail'],FILTER_SANITIZE_EMAIL));
                 $user->setPassword(filter_var($_POST['password'],FILTER_SANITIZE_STRING));
                 $hased = $passwordEncoder->encodePassword($user, $user->getPassword());
 
-                $em->persist($user);
+               // $em->persist($user);
                 $em->flush();
 
                 $this->get('session')->getFlashBag()->add('reussi', 'Modification réussie !');
