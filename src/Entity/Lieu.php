@@ -69,13 +69,6 @@ class Lieu
         return $this->id;
     }
 
-    /**
-     * @param mixed $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
 
 
     /**
@@ -113,7 +106,7 @@ class Lieu
     /**
      * @return ArrayCollection
      */
-    public function getSorties(): ArrayCollection
+    public function getSorties()
     {
         return $this->sorties;
     }
@@ -121,7 +114,7 @@ class Lieu
     /**
      * @param ArrayCollection $sorties
      */
-    public function setSorties(ArrayCollection $sorties)
+    public function setSorties($sorties)
     {
         $this->sorties = $sorties;
     }
