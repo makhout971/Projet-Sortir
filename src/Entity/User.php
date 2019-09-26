@@ -15,8 +15,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 class User implements UserInterface
 {
 
-
-
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -260,8 +258,6 @@ class User implements UserInterface
     {
         $this->admin = 0;
         $this->actif = 0;
-
-
     }
 
 }
