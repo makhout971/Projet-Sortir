@@ -51,8 +51,25 @@ class Sortie
 
     /**
      * @ORM\Column(type="string")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Etat", inversedBy="sorties")
      */
     private $etat;
+
+//    /**
+//     *
+//     */
+//    private $etat;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Site", inversedBy="sorties")
+     */
+    private $site;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Lieu", inversedBy="sorties")
+     */
+    private $lieu;
+
 
     public function getId()
     {
@@ -170,6 +187,39 @@ class Sortie
     {
         $this->etat = $etat;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getSite()
+    {
+        return $this->site;
+    }
+
+    /**
+     * @param mixed $site
+     */
+    public function setSite($site)
+    {
+        $this->site = $site;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLieu()
+    {
+        return $this->lieu;
+    }
+
+    /**
+     * @param mixed $lieu
+     */
+    public function setLieu($lieu)
+    {
+        $this->lieu = $lieu;
+    }
+
 
 
 

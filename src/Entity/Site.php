@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -14,12 +15,25 @@ class Site
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $idSite;
+    private $id;
 
     /**
      * @ORM\Column(type="string", length=60)
      */
     private $nom;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Sortie", mappedBy="site")
+     */
+    private $sorties;
+
+    /**
+     * @var Site constructor.
+     */
+    public function __construct()
+    {
+        $this->sorties = new ArrayCollection();
+    }
 
     /**
      * @return mixed
@@ -45,6 +59,23 @@ class Site
     {
         $this->nom = $nom;
     }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getSorties(): ArrayCollection
+    {
+        return $this->sorties;
+    }
+
+    /**
+     * @param ArrayCollection $sorties
+     */
+    public function setSorties(ArrayCollection $sorties)
+    {
+        $this->sorties = $sorties;
+    }
+
 
 
 }

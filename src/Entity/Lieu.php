@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -14,7 +15,7 @@ class Lieu
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $idLieu;
+    private $id;
 
     /**
      * @ORM\Column(type="string", length=100)
@@ -25,6 +26,19 @@ class Lieu
      * @ORM\Column(type="string", length=150)
      */
     private $rue;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Sortie", mappedBy="lieu")
+     */
+    private $sorties;
+
+    /**
+     * @var Lieu constructor.
+     */
+    public function __construct()
+    {
+        $this->sorties = new ArrayCollection();
+    }
 
     /**
      * @return mixed
@@ -66,6 +80,23 @@ class Lieu
     {
         $this->rue = $rue;
     }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getSorties(): ArrayCollection
+    {
+        return $this->sorties;
+    }
+
+    /**
+     * @param ArrayCollection $sorties
+     */
+    public function setSorties(ArrayCollection $sorties)
+    {
+        $this->sorties = $sorties;
+    }
+
 
 
 }

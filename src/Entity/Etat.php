@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use PhpParser\Node\Expr\Array_;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EtatRepository")
@@ -13,15 +15,28 @@ class Etat
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @var
+     * @var identifiant Etat
      */
-    private $idEtat;
+    private $id;
 
     /**
      * @ORM\Column(type="string", length = 15)
-     * @var
+     * @var libelle
      */
     private $libelle;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Sortie", mappedBy="etat")
+     */
+    private $sorties;
+
+    /**
+     * @var Etat constructor.
+     */
+    public function __construct()
+    {
+        $this->sorties = new ArrayCollection();
+    }
 
     /**
      * @return mixed
@@ -46,6 +61,23 @@ class Etat
     {
         $this->libelle = $libelle;
     }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getSorties(): ArrayCollection
+    {
+        return $this->sorties;
+    }
+
+    /**
+     * @param ArrayCollection $sorties
+     */
+    public function setSorties(ArrayCollection $sorties)
+    {
+        $this->sorties = $sorties;
+    }
+
 
 
 }
