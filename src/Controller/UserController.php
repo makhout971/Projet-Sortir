@@ -25,14 +25,14 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/login", name="user_login")
+     * @Route("/test", name="test")
      */
-    public function login()
+    public function test()
     {
-        return  $this->render('user/login.html.twig', [
+        return $this->render('user/login.html.twig', [
+
         ]);
     }
-
 
 
 
