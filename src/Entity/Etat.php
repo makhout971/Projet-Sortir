@@ -39,14 +39,22 @@ class Etat
     }
 
     /**
-     * @return mixed
+     * @return identifiant
      */
-    public function getIdEtat()
+    public function getId(): identifiant
     {
-        return $this->idEtat;
+        return $this->id;
     }
 
     /**
+     * @param identifiant $id
+     */
+    public function setId(identifiant $id)
+    {
+        $this->id = $id;
+    }
+
+       /**
      * @return mixed
      */
     public function getLibelle()

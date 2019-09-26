@@ -41,11 +41,40 @@ class Lieu
     }
 
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Ville", inversedBy="lieux")
+     */
+    private $ville;
+
+    /**
      * @return mixed
      */
-    public function getIdLieu()
+    public function getVille()
     {
-        return $this->idLieu;
+        return $this->ville;
+    }
+
+    /**
+     * @param mixed $ville
+     */
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 
 

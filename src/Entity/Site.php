@@ -36,11 +36,40 @@ class Site
     }
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="site")
+     */
+    private $users;
+
+    /**
      * @return mixed
      */
-    public function getIdSite()
+    public function getUsers()
     {
-        return $this->idSite;
+        return $this->users;
+    }
+
+    /**
+     * @param mixed $users
+     */
+    public function setUsers($users)
+    {
+        $this->users = $users;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 
 

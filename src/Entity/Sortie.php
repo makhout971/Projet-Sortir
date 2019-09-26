@@ -55,11 +55,6 @@ class Sortie
      */
     private $etat;
 
-//    /**
-//     *
-//     */
-//    private $etat;
-
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Site", inversedBy="sorties")
      */
