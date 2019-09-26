@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -27,6 +28,19 @@ class Lieu
     private $rue;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Sortie", mappedBy="lieu")
+     */
+    private $sorties;
+
+    /**
+     * @var Lieu constructor.
+     */
+    public function __construct()
+    {
+        $this->sorties = new ArrayCollection();
+    }
+
+    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Ville", inversedBy="lieux")
      */
     private $ville;
@@ -47,14 +61,20 @@ class Lieu
         $this->ville = $ville;
     }
 
-
-
     /**
      * @return mixed
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 
 
@@ -89,6 +109,23 @@ class Lieu
     {
         $this->rue = $rue;
     }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getSorties(): ArrayCollection
+    {
+        return $this->sorties;
+    }
+
+    /**
+     * @param ArrayCollection $sorties
+     */
+    public function setSorties(ArrayCollection $sorties)
+    {
+        $this->sorties = $sorties;
+    }
+
 
 
 }
