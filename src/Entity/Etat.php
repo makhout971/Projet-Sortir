@@ -18,10 +18,35 @@ class Etat
     private $idEtat;
 
     /**
-     * @ORM\Column(type="String", length = 15)
+     * @ORM\Column(type="string", length = 15)
      * @var
      */
     private $libelle;
+
+    /**
+     * @return mixed
+     */
+    public function getIdEtat()
+    {
+        return $this->idEtat;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLibelle()
+    {
+        return $this->libelle;
+    }
+
+    /**
+     * @param mixed $libelle
+     */
+    public function setLibelle($libelle)
+    {
+        $this->libelle = $libelle;
+    }
+
 
 }
 
