@@ -182,12 +182,12 @@ class UserController extends Controller
                                  EntityManagerInterface $em
                                  )
     {
-
+        $userRepo = $this->getDoctrine()->getRepository(User::class);
+        $u = $this->getUser();
 
         if (isset($_POST['validate']) && $_POST['validate'] != null)
         {
-            $userRepo = $this->getDoctrine()->getRepository(User::class);
-            $u = $this->getUser();
+
 
             $user = $userRepo -> find($u->getId());
             if (!empty($_POST['prenom'])
@@ -212,13 +212,15 @@ class UserController extends Controller
 
                 $this->get('session')->getFlashBag()->add('reussi', 'Modification réussie !');
 
-
             }
+
+
+
         }
-            return $this->render("user/profil.html.twig",[
-            ]);
 
-
+        return $this->render("user/profil.html.twig",[
+            'user' => $u
+        ]);
 
     }
 

@@ -9,23 +9,23 @@
 {#    {{ form_widget(profilForm) }}#}
 <form action="{{ path("user_profil") }}" method="post" name="modifForm">
     <label>Pseudo :</label>
-    <input type="text" readonly value="" required> {# {{ user.username }}#}
+    <input type="text" readonly value="{{ user.username }}" required> {# #}
     <br></br>
 
     <label>Prenom :</label>
-    <input type="text"  value="" required id="prenom" > {# {{ user.prenom }}#}
+    <input type="text"  value="{{ user.prenom }}" required id="prenom" > {# #}
     <br></br>
 
     <label>Nom :</label>
-    <input type="text"  value="" required> {# {{ user.nom }}#}
+    <input type="text"  value="{{ user.nom }}" required> {# #}
     <br></br>
 
     <label>Email :</label>
-    <input type="email"  value="" required name="nom"> {# {{ user.email }}#}
+    <input type="email"  value="{{ user.email }}" required name="nom"> {# #}
     <br></br>
 
     <label>Telephone :</label>
-    <input type="tel"  value="" required name="tel"> {# {{ user.telephone }}#}
+    <input type="tel"  value="" required name="tel"> {# {{ user.telephone }} #}
     <br></br>
 
     <label>Mot de passe :</label>
