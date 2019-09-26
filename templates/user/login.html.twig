@@ -6,10 +6,14 @@
 {% endblock %}
 
 {% block body %}
-    <form method="post" action="./test">
-        <label for="username">Identifiant :</label> <input type="text" name="_username" id="_username" required>
-        <label for="password">Mot de passe :</label> <input type="text" name="password" id="password" required>
-        <button type="submit">Submit</button>
+    <form method="post">
+        <label for="username">Identifiant :</label> <input type="text" name="_username" id="username" required>
+        <label for="password">Mot de passe :</label> <input type="password" name="_password" id="password" required>
+
+        <input type="hidden" name="{{ path('user_home')}}" value=""/>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
+
+        <input type="submit"></input>
     </form>
 {% endblock %}
 

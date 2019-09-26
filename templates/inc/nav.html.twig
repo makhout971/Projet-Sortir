@@ -1,9 +1,14 @@
 <nav id="nav">
     <ul id="navUl">
         <li><a href="{{ path('user_home') }}">Accueil</a></li>
-        <li><a href="{{ path('security_login') }}">Se Connecter</a></li>
-        <li><a href="{{ path('register') }}">S'inscrire</a></li>
+        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
         <li><a href="{{ path('user_profil') }}">Mon Profil</a></li>
+            <li><a href="{{ path('logout') }}">Se déconnecter</a></li>
+        {% else %}
+        <li><a href="{{ path('login') }}">Se Connecter</a></li>
+        <li><a href="{{ path('register') }}">S'inscrire</a></li>
+        {% endif %}
+
     </ul>
 
 

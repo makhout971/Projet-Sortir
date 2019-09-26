@@ -30,7 +30,7 @@ class Sortie
     private $dateHeureDebut;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $duree;
 
@@ -57,6 +57,118 @@ class Sortie
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * @param mixed $nom
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDateHeureDebut()
+    {
+        return $this->dateHeureDebut;
+    }
+
+    /**
+     * @param mixed $dateHeureDebut
+     */
+    public function setDateHeureDebut($dateHeureDebut)
+    {
+        $this->dateHeureDebut = $dateHeureDebut;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDuree()
+    {
+        return $this->duree;
+    }
+
+    /**
+     * @param mixed $duree
+     */
+    public function setDuree($duree)
+    {
+        $this->duree = $duree;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDateLimiteInscription()
+    {
+        return $this->dateLimiteInscription;
+    }
+
+    /**
+     * @param mixed $dateLimiteInscription
+     */
+    public function setDateLimiteInscription($dateLimiteInscription)
+    {
+        $this->dateLimiteInscription = $dateLimiteInscription;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNbInscriptionMax()
+    {
+        return $this->nbInscriptionMax;
+    }
+
+    /**
+     * @param mixed $nbInscriptionMax
+     */
+    public function setNbInscriptionMax($nbInscriptionMax)
+    {
+        $this->nbInscriptionMax = $nbInscriptionMax;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getInfosSortie()
+    {
+        return $this->infosSortie;
+    }
+
+    /**
+     * @param mixed $infosSortie
+     */
+    public function setInfosSortie($infosSortie)
+    {
+        $this->infosSortie = $infosSortie;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEtat()
+    {
+        return $this->etat;
+    }
+
+    /**
+     * @param mixed $etat
+     */
+    public function setEtat($etat)
+    {
+        $this->etat = $etat;
     }
 
 

@@ -25,14 +25,34 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/test", name="test")
+     * @Route("/login", name="login")
      */
-    public function test()
+    public function login()
     {
-        return $this->render('user/login.html.twig', [
-
+        return  $this->render('user/login.html.twig', [
         ]);
     }
+
+
+    /**
+     * @Route("/logout", name="logout")
+     */
+    public function logout()
+    {
+
+    }
+
+
+    /**
+     * @Route("/fail", name="fail")
+     */
+        public function index()
+        {
+
+            return  $this->render('user/fail.html.twig', [
+                'controller_name' => 'UserController',
+            ]);
+        }
 
 
 
@@ -153,7 +173,6 @@ class UserController extends Controller
 
 
 
-    // Pierre
 
     /**
      * @Route("/monProfil", name="user_profil")

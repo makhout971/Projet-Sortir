@@ -16,10 +16,13 @@ security:
                 login_path: login
                 check_path: login
                 default_target_path: user_home
-
+                failure_path: fail
+                csrf_parameter: _csrf_security_token
+                csrf_token_id: a_private_string
             logout_on_user_change: true
             logout:
-                path: app_logout
+                path: logout
+                target: /
                 # where to redirect after logout
                 # target: app_any_route
 
@@ -30,8 +33,8 @@ security:
             algorithm: bcrypt
 
     access_control:
-        - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path ^/monProfil, roles: IS_AUTHENTICATED_FULLY }
+        - { path: '^/login', roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: '^/monProfil', roles: IS_AUTHENTICATED_FULLY }
 
 #    remember_me:
 #        secret:   '%kernel.secret%'
