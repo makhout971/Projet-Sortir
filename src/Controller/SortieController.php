@@ -10,32 +10,27 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- *
  * @Route("/sortie")
  */
 class SortieController extends Controller
 {
+
     /**
      * @Route("/add", name="sortie")
      */
     public function addSortie(Request $request, EntityManagerInterface $em)
     {
         $sortie = new Sortie();
-        $form = $this->createForm(SortieType::class, $sortie);
-        $form->handleRequest($request);
+        $sortieForm = $this->createForm(SortieType::class, $sortie);
+        $sortieForm->handleRequest($request);
 
-        if ($form->isSubmitted() &&  $form->isValid()){
+        if ($sortieForm->isSubmitted() &&  $sortieForm->isValid()){
             $em->persist($sortie);
             $em->flush();
         }
 
-
-
-
-
-
         return $this->render('sortie/add.html.twig', [
-            'sortieForm' => $form->createView(),
+            'sortieForm' => $sortieForm->createView(),
         ]);
     }
 
