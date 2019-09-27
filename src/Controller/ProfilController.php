@@ -35,6 +35,8 @@ class ProfilController extends Controller
             $em->persist($user);
             $em->flush();
 
+           return $this->redirectToRoute('user_home');
+
         }
 
 

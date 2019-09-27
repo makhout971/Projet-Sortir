@@ -173,57 +173,57 @@ class UserController extends Controller
 
 
 
-
-    /**
-     * @Route("/monProfil", name="user_profil")
-     */
-    public function updateProfil(Request $request,
-                                 UserPasswordEncoderInterface $passwordEncoder,
-                                 EntityManagerInterface $em
-                                 )
-    {
-        $userRepo = $this->getDoctrine()->getRepository(User::class);
-        $u = $this->getUser();
-
-        if (isset($_POST['validate']) && $_POST['validate'] != null)
-        {
-
-
-            $user = $userRepo -> find($u->getId());
-            if (!empty($_POST['prenom'])
-                &&
-                !empty( $_POST['nom'])
-                &&
-                !empty($_POST['tel'])
-                &&
-                !empty( $_POST['password'])
-                &&
-                !empty($_POST['mail'])
-            ){
-                $prename = filter_var($_POST['prenom'],FILTER_SANITIZE_STRING);
-                $user->setPrenom($prename);
-                $name = filter_var($_POST['nom'],FILTER_SANITIZE_STRING);
-                $user->setNom($name);
-                $user->setTel(filter_var($_POST['tel'],FILTER_SANITIZE_STRING));
-                $user->setEmail(filter_var($_POST['mail'],FILTER_SANITIZE_EMAIL));
-                $user->setPassword(filter_var($_POST['password'],FILTER_SANITIZE_STRING));
-                $hased = $passwordEncoder->encodePassword($user, $user->getPassword());
-
-               // $em->persist($user);
-                $em->flush();
-
-                $this->get('session')->getFlashBag()->add('reussi', 'Modification réussie !');
-
-            }
-
-
-
-        }
-
-        return $this->render("user/profil.html.twig",[
-            'user' => $u
-        ]);
-
-    }
+//
+//    /**
+//     * @Route("/monProfil", name="user_profil")
+//     */
+//    public function updateProfil(Request $request,
+//                                 UserPasswordEncoderInterface $passwordEncoder,
+//                                 EntityManagerInterface $em
+//                                 )
+//    {
+//        $userRepo = $this->getDoctrine()->getRepository(User::class);
+//        $u = $this->getUser();
+//
+//        if (isset($_POST['validate']) && $_POST['validate'] != null)
+//        {
+//
+//
+//            $user = $userRepo -> find($u->getId());
+//            if (!empty($_POST['prenom'])
+//                &&
+//                !empty( $_POST['nom'])
+//                &&
+//                !empty($_POST['tel'])
+//                &&
+//                !empty( $_POST['password'])
+//                &&
+//                !empty($_POST['mail'])
+//            ){
+//                $prename = filter_var($_POST['prenom'],FILTER_SANITIZE_STRING);
+//                $user->setPrenom($prename);
+//                $name = filter_var($_POST['nom'],FILTER_SANITIZE_STRING);
+//                $user->setNom($name);
+//                $user->setTel(filter_var($_POST['tel'],FILTER_SANITIZE_STRING));
+//                $user->setEmail(filter_var($_POST['mail'],FILTER_SANITIZE_EMAIL));
+//                $user->setPassword(filter_var($_POST['password'],FILTER_SANITIZE_STRING));
+//                $hased = $passwordEncoder->encodePassword($user, $user->getPassword());
+//
+//               // $em->persist($user);
+//                $em->flush();
+//
+//                $this->get('session')->getFlashBag()->add('reussi', 'Modification réussie !');
+//
+//            }
+//
+//
+//
+//        }
+//
+//        return $this->render("user/profil.html.twig",[
+//            'user' => $u
+////        ]);
+//
+//    }
 
 }

@@ -33,13 +33,13 @@ class ProfilType extends AbstractType
             ->add('prenom', TextType::class,[
                 'label' => 'Prénom',
                 'attr' => [
-                    'readOnly' => 'true'
+//                    'readOnly' => 'true'
                 ]
             ])
             ->add('nom', TextType::class,[
                 'label' => 'Nom',
                 'attr' => [
-                    'readOnly' => 'true'
+//                    'readOnly' => 'true'
                 ]
             ])
             ->add('tel', TextType::class,[
@@ -62,7 +62,7 @@ class ProfilType extends AbstractType
         ])
 
             ->add('site', EntityType::class, [
-                
+
                     'class' => Site::class,
                     'choice_label' => 'nom',
                     'required' => true
