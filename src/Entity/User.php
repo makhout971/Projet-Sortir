@@ -69,10 +69,6 @@ class User implements UserInterface
      */
     private $actif;
 
-    /**
-     * @ORM\Column(type="integer", nullable=false)
-     */
-    private $no_site;
 
     private $roles;
 
