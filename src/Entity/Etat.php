@@ -41,7 +41,7 @@ class Etat
     /**
      * @return identifiant
      */
-    public function getId(): identifiant
+    public function getId()
     {
         return $this->id;
     }
@@ -73,7 +73,7 @@ class Etat
     /**
      * @return ArrayCollection
      */
-    public function getSorties(): ArrayCollection
+    public function getSorties()
     {
         return $this->sorties;
     }

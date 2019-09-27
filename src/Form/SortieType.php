@@ -4,10 +4,13 @@ namespace App\Form;
 
 use App\Entity\Sortie;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\FormTypeInterface;
+use Symfony\Component\Validator\Constraints\Date;
 
 class SortieType extends AbstractType
 {
@@ -20,12 +23,10 @@ class SortieType extends AbstractType
                 'required' => true
 
             ])
-            ->add('prenom', TextType::class, [
-                'label' => 'Prenom : ',
-                'required' => true
 
-            ])
-            ->add('dateHeureDebut', \DateTime::class, [
+
+
+            ->add('dateHeureDebut', DateType::class, [
                 'label' => 'Date et heure du début : ',
                 'required' => true,
 
@@ -35,12 +36,12 @@ class SortieType extends AbstractType
 
 
             ])
-            ->add('dateLimiteInscription', \DateTime::class, [
+            ->add('dateLimiteInscription', DateType::class, [
                 'required' => true,
                 'label' => 'Date limite d\'inscription',
 
             ])
-            ->add('nbInscriptionsMax', IntegerType::class, [
+            ->add('nbInscriptionMax', IntegerType::class, [
                 'label' => 'Nombre max de participants : ',
                 'required' => true
             ])

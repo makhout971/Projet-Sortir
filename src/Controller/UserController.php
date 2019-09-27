@@ -111,7 +111,7 @@ class UserController extends Controller
         if ($registerForm->isSubmitted() && $registerForm->isValid())
         {
             //hacher le mot de passe
-
+//            $user->set
             $hashed = $encoder->encodePassword($user, $user->getPassword());
             $user->setPassword($hashed);
 
