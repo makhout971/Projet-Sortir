@@ -46,10 +46,9 @@ class SortieType extends AbstractType
                 'required' => true
             ])
             ->add('infosSortie', TextType::class, [
-                'label' => 'Résumé de l\évènement ',
+                'label' => 'Résumé de l\'évènement ',
                 'required' => true
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
