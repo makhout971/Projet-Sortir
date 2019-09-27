@@ -22,17 +22,34 @@ class SortieController extends Controller
     {
         $sortie = new Sortie();
         $sortieForm = $this->createForm(SortieType::class, $sortie);
-        $sortieForm->handleRequest($request);
 
+//        $etat = $this->getEtat();
+//        $sortie->setEtat($etat);
+//
+        $site = $this->getUser()->getSite();
+        $sortie->setSite($site);
+//
+//        $lieu = getSortie()->getLieu();
+//        $sortie->setLieu($lieu);
+
+        $user = $this->getUser();
+        $sortie->setUserOrganisateur($user);
+
+        $sortieForm->handleRequest($request);
         if ($sortieForm->isSubmitted() &&  $sortieForm->isValid()){
             $em->persist($sortie);
             $em->flush();
+
+            $this-> addFlash("success","Sortie créée avec succès !");
+//            TODO : redirige vers la page souhaitée
+//            return $this->redirectToRoute("");
         }
 
         return $this->render('sortie/add.html.twig', [
             'sortieForm' => $sortieForm->createView(),
         ]);
     }
+
 
 
 
