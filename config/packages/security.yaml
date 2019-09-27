@@ -2,15 +2,29 @@ security:
 
 
     providers:
-        our_db_provider:
+        db_username:
+                entity:
+                    class: App\Entity\User
+                    property: username
+        db_email:
             entity:
                 class: App\Entity\User
-                property: username
+                property: email
+
+
+        all_users:
+            chain:
+                providers: ['db_username', 'db_email']
+
+
+
+#
+
 
     firewalls:
         main:
             pattern: ^/
-            provider: our_db_provider
+            provider: all_users
             anonymous: ~
             form_login:
                 login_path: login
