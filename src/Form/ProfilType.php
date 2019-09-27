@@ -2,12 +2,16 @@
 
 namespace App\Form;
 
+use App\Entity\Site;
 use App\Entity\User;
 use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Bridge\Doctrine\Tests\Form\Type\EntityTypePerformanceTest;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -50,12 +54,23 @@ class ProfilType extends AbstractType
                     'readOnly' => 'true'
                 ]
             ])
-            ->add('password', PasswordType::class,[
-                'label' => 'Mot de passe',
-                'attr' => [
-                    'readOnly' => 'true'
-                ]
-            ])
+        ->add('password', RepeatedType::class, [
+            'type' => PasswordType::class,
+            'first_options' => ['label' => 'Mot de passe'],
+            'second_options' => ['label' => 'Répétez votre mot de passe'],
+            'required' => 'true'
+        ])
+
+            ->add('site', EntityType::class, [
+                
+                    'class' => Site::class,
+                    'choice_label' => 'nom',
+                    'required' => true
+
+                ])
+
+
+
 //            ->add('ville', ChoiceType::class,[
 //                'label' => 'Ville de rattachement',
 //                'choices' => [

@@ -5,38 +5,14 @@
     <script src="{{ asset('js/profil.js') }}"></script>
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 
-{#    {{ form_start(profilForm) }}#}
-{#    {{ form_widget(profilForm) }}#}
-<form action="{{ path("user_profil") }}" method="post" name="modifForm">
-    <label>Pseudo :</label>
-    <input type="text" readonly value="{{ user.username }}" required> {# #}
-    <br></br>
-
-    <label>Prenom :</label>
-    <input type="text"  value="{{ user.prenom }}" required id="prenom" name="prenom" > {# #}
-    <br></br>
-
-    <label>Nom :</label>
-    <input type="text"  value="{{ user.nom }}" required name="nom"> {# #}
-    <br></br>
-
-    <label>Email :</label>
-    <input type="email"  value="{{ user.email }}" required name="email"> {# #}
-    <br></br>
-
-    <label>Telephone :</label>
-    <input type="tel"  value="" required name="tel"> {# {{ user.telephone }} #}
-    <br></br>
-
-    <label>Mot de passe :</label>
-    <input type="password"  value="" required name="password">
-    <br></br>
-
-
+    {{ form_start(profilForm) }}
+    {{ form_widget(profilForm) }}
 
 
     <input type="submit" value="Valider" id="validate"  name="validate">
 
+
+       {{ form_end(profilForm) }}
 
 
 </form>
@@ -47,7 +23,7 @@
         </div>
 
     {%  endfor   %}
-{#   {{ form_end(profilForm) }}#}
+
 
     {#
     document.getElementById("name").readOnly = true;
