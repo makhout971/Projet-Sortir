@@ -7,22 +7,13 @@
 
     {{ form_start(profilForm) }}
     {{ form_widget(profilForm) }}
-
-
     <input type="submit" value="Valider" id="validate"  name="validate">
-
 
        {{ form_end(profilForm) }}
 
 
-</form>
 
-    {% for flashMessage in app.session.flashbag.get('reussi') %}
-        <div>
-            {{ flashMessage }}
-        </div>
 
-    {%  endfor   %}
 
 
     {#
