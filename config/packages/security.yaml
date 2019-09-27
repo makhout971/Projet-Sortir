@@ -4,8 +4,8 @@ security:
     providers:
         our_db_provider:
                 entity:
-                  class: App\Entity\User
-#                property: username
+                    class: App\Entity\User
+                    property: username
 #        db_email:
 #            entity:
 #                class: App\Entity\User
@@ -24,10 +24,7 @@ security:
             #                class: App\Entity\User
             #                property: email
 
-    #        in_memory:
-#            memory:
-#                users:
-#                    foo: { password: test }
+
 #        user_db:
 #            entity: { class: AppBundle\Entity\User, property: username }
 #
