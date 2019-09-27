@@ -11,6 +11,11 @@
 {% endblock %}
 
 {% block body %}
+  {% for flashMessage in app.session.flashbag.get('succesProfil') %}
+    <div>
+      {{ flashMessage }}
+    </div>
+  {% endfor %}
 {% endblock %}
 
 

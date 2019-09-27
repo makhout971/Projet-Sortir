@@ -35,11 +35,7 @@
 
 <main id="body">
 {% block body %}
-    {% for flashMessage in app.session.flashbag.get('reussi') %}
-    <div>
-        {{ flashMessage }}
-    </div>
-    {% endfor %}
+
 {% endblock %}
 </main>
 
