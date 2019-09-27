@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -50,7 +51,6 @@ class Sortie
     private $infosSortie;
 
     /**
-     * @ORM\Column(type="string")
      * @ORM\ManyToOne(targetEntity="App\Entity\Etat", inversedBy="sorties")
      */
     private $etat;
@@ -64,6 +64,24 @@ class Sortie
      * @ORM\ManyToOne(targetEntity="App\Entity\Lieu", inversedBy="sorties")
      */
     private $lieu;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="sortiesOrganisateur")
+     */
+    private $userOrganisateur;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="sorties")
+     */
+    private $users;
+
+    /**
+     * Sortie constructor.
+     */
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+    }
 
 
     public function getId()
@@ -213,6 +231,38 @@ class Sortie
     public function setLieu($lieu)
     {
         $this->lieu = $lieu;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUserOrganisateur()
+    {
+        return $this->userOrganisateur;
+    }
+
+    /**
+     * @param mixed $userOrganisateur
+     */
+    public function setUserOrganisateur($userOrganisateur)
+    {
+        $this->userOrganisateur = $userOrganisateur;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getUsers(): ArrayCollection
+    {
+        return $this->users;
+    }
+
+    /**
+     * @param ArrayCollection $users
+     */
+    public function setUsers(ArrayCollection $users)
+    {
+        $this->users = $users;
     }
 
 

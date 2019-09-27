@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -76,9 +77,19 @@ class User implements UserInterface
     private $roles;
 
     /**
-     * @ORM\ManyToOne(targetEntity="site", inversedBy="users")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Site", inversedBy="users")
      */
     private $site;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Sortie", mappedBy="users")
+     */
+    private $sorties;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Sortie", mappedBy="userOrganisateur")
+     */
+    private $sortiesOrganisateur;
 
     /**
      * @return mixed
@@ -277,8 +288,41 @@ class User implements UserInterface
 
     public function __construct()
     {
+        $this->sortiesOrganisateur = new ArrayCollection();
         $this->admin = 0;
         $this->actif = 0;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSorties()
+    {
+        return $this->sorties;
+    }
+
+    /**
+     * @param mixed $sorties
+     */
+    public function setSorties($sorties)
+    {
+        $this->sorties = $sorties;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getSortiesOrganisateur()
+    {
+        return $this->sortiesOrganisateur;
+    }
+
+    /**
+     * @param ArrayCollection $sortiesOrganisateur
+     */
+    public function setSortiesOrganisateur( $sortiesOrganisateur)
+    {
+        $this->sortiesOrganisateur = $sortiesOrganisateur;
     }
 
 }

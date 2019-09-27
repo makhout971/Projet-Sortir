@@ -15,13 +15,11 @@ class Etat
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @var identifiant Etat
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length = 15)
-     * @var libelle
      */
     private $libelle;
 
@@ -31,7 +29,7 @@ class Etat
     private $sorties;
 
     /**
-     * @var Etat constructor.
+     * constructor.
      */
     public function __construct()
     {
