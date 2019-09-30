@@ -51,7 +51,9 @@ class SortieType extends AbstractType
             ])
 
 //            TODO: FORMULAIRE DANS UN FORMULAIRE POUR VILLE ET LIEU
-//            ->add('lieu', EntityType::class,[
+            ->add('lieu', LieuType::class,[
+
+            ])
 //                'class'=>Lieu::class,
 //                'label' =>'Lieu :',
 //                'required'=>true,

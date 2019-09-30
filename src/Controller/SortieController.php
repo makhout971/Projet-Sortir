@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Lieu;
 use App\Entity\Sortie;
+use App\Form\LieuType;
 use App\Form\SortieType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -22,6 +24,8 @@ class SortieController extends Controller
     {
         $sortie = new Sortie();
         $sortieForm = $this->createForm(SortieType::class, $sortie);
+//        $lieu =new Lieu();
+//        $lieuForm = $this->createForm(LieuType::class,$lieu);
         //
         $site = $this->getUser()->getSite();
         $sortie->setSite($site);
@@ -31,6 +35,8 @@ class SortieController extends Controller
 
         $user = $this->getUser();
         $sortie->setUserOrganisateur($user);
+
+
 
         $sortieForm->handleRequest($request);
         if ($sortieForm->isSubmitted() &&  $sortieForm->isValid()){
