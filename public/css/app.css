@@ -1,15 +1,14 @@
 #body {
-    background-color: beige;
+
 }
 
 #header
 {
     background-color: lightblue;
-    position: relative;
     left: 0;
     right: 0;
     text-align: center;
-    padding: 60px;
+
     top: 0;
     font-family: sans-serif;
 

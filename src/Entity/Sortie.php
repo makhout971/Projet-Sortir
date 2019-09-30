@@ -25,14 +25,14 @@ class Sortie
     private $nom;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      */
     private $dateHeureDebut;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="datetime")
      */
-    private $duree;
+    private $dateHeureFin;
 
     /**
      * @ORM\Column(type="date")
@@ -123,21 +123,6 @@ class Sortie
         $this->dateHeureDebut = $dateHeureDebut;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getDuree()
-    {
-        return $this->duree;
-    }
-
-    /**
-     * @param mixed $duree
-     */
-    public function setDuree($duree)
-    {
-        $this->duree = $duree;
-    }
 
     /**
      * @return mixed
@@ -265,6 +250,22 @@ class Sortie
     public function setUsers(ArrayCollection $users)
     {
         $this->users = $users;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDateHeureFin()
+    {
+        return $this->dateHeureFin;
+    }
+
+    /**
+     * @param mixed $dateHeureFin
+     */
+    public function setDateHeureFin($dateHeureFin)
+    {
+        $this->dateHeureFin = $dateHeureFin;
     }
 
 
