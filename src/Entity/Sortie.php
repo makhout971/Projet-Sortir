@@ -11,7 +11,6 @@ use Doctrine\ORM\Mapping as ORM;
 class Sortie
 {
 
-
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -31,7 +30,7 @@ class Sortie
     private $dateHeureDebut;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="integer")
      */
     private $duree;
 
@@ -61,7 +60,7 @@ class Sortie
     private $site;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Lieu", inversedBy="sorties")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Lieu", inversedBy="sorties", cascade={"persist"})
      */
     private $lieu;
 
@@ -81,6 +80,9 @@ class Sortie
     public function __construct()
     {
         $this->users = new ArrayCollection();
+//        $e = new Etat();
+//        $e->setLibelle("Créée");
+//        $this->etat = $e;
     }
 
 
