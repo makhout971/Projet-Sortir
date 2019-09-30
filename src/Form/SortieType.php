@@ -2,7 +2,10 @@
 
 namespace App\Form;
 
+use App\Entity\Lieu;
 use App\Entity\Sortie;
+use App\Entity\User;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -23,9 +26,6 @@ class SortieType extends AbstractType
                 'required' => true
 
             ])
-
-
-
             ->add('dateHeureDebut', DateType::class, [
                 'label' => 'Date et heure du début : ',
                 'required' => true,
@@ -48,7 +48,22 @@ class SortieType extends AbstractType
             ->add('infosSortie', TextType::class, [
                 'label' => 'Résumé de l\'évènement ',
                 'required' => true
-            ]);
+            ])
+
+//            TODO: FORMULAIRE DANS UN FORMULAIRE POUR VILLE ET LIEU
+//            ->add('lieu', EntityType::class,[
+//                'class'=>Lieu::class,
+//                'label' =>'Lieu :',
+//                'required'=>true,
+////                'label' =>'Rue :',
+////                'required'=>true ,
+////                'label' =>'Ville :',
+////                'required'=>true ,
+////                'label' =>'Code Postal :',
+////                'required'=>true
+//            ])
+
+            ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
