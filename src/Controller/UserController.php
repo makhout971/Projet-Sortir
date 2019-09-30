@@ -117,6 +117,11 @@ class UserController extends Controller
 
             $em->persist($user);
             $em->flush();
+            $this->addFlash(
+                'succesRegister',
+                'Votre profil a été modifié !'
+            );
+            return $this->redirectToRoute('login');
 
         }
 
