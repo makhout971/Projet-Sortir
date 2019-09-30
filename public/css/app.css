@@ -5,8 +5,14 @@
 #header
 {
     background-color: lightblue;
+    position: relative;
     left: 0;
     right: 0;
+    text-align: center;
+    padding: 60px;
+    top: 0;
+    font-family: sans-serif;
+
 
 }
 
@@ -25,6 +31,7 @@
 {
     padding: 0;
     margin: 0;
+
 }
 
 
@@ -32,6 +39,7 @@
 {
     display: inline;
     list-style: none;
+
 }
 
 nav li
@@ -39,4 +47,10 @@ nav li
     display: inline-block;
     margin: 0 60px;
 
+
+}
+
+a
+{
+    text-decoration: none;
 }
