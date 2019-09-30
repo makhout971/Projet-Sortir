@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
+use App\Repository\EtatRepository;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping as ORM;
 use PhpParser\Node\Expr\Array_;
 
@@ -35,6 +37,10 @@ class Etat
     {
       //  $this->libelle = new Libelle();
         $this->sorties = new ArrayCollection();
+        $em = EntityManager::class;
+        $rep = new EtatRepository();
+        $lib = $rep->find(1);
+        $this->setLibelle($lib);
     }
 
     /**
