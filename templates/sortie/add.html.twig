@@ -11,6 +11,12 @@
 
     <button type="submit">Créer ma sortie</button>
     {{ form_end(sortieForm) }}
+
+    {% for flashMessage in app.session.flashbag.get('successSortie') %}
+<div style="color: #6b9311" style="background-color: darkviolet">
+    {{ flashMessage }}
+    {% endfor %}
+    </div>
     <img width="250px" height="250px" src="{{ asset('img/vladBerlu.jpg') }}">
 {% endblock %}
 

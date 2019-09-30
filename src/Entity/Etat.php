@@ -21,7 +21,7 @@ class Etat
     private $id;
 
     /**
-     * @ORM\Column(type="string", length = 15)
+     * @ORM\Column(type="string", length = 50)
      */
     private $libelle;
 
@@ -37,14 +37,11 @@ class Etat
     {
       //  $this->libelle = new Libelle();
         $this->sorties = new ArrayCollection();
-        $em = EntityManager::class;
-        $rep = new EtatRepository();
-        $lib = $rep->find(1);
-        $this->setLibelle($lib);
+
     }
 
     /**
-     * @return identifiant
+     * @return mixed
      */
     public function getId()
     {

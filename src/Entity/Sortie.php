@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Repository\EtatRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -25,19 +26,58 @@ class Sortie
     private $nom;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      */
     private $dateHeureDebut;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="datetime")
      */
-    private $duree;
+    private $dateHeureFin;
 
     /**
-     * @ORM\Column(type="date")
+     * @return mixed
+     */
+    public function getDateHeureFin()
+    {
+        return $this->dateHeureFin;
+    }
+
+    /**
+     * @param mixed $dateHeureFin
+     */
+    public function setDateHeureFin($dateHeureFin)
+    {
+        $this->dateHeureFin = $dateHeureFin;
+    }
+
+
+
+    /**
+     * @ORM\Column(type="datetime")
      */
     private $dateLimiteInscription;
+
+    /**
+     * @return mixed
+     */
+    public function getInscriptionOuverte()
+    {
+        return $this->inscriptionOuverte;
+    }
+
+    /**
+     * @param mixed $inscriptionOuverte
+     */
+    public function setInscriptionOuverte($inscriptionOuverte)
+    {
+        $this->inscriptionOuverte = $inscriptionOuverte;
+    }
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $inscriptionOuverte;
 
     /**
      * ORM\Column(type="integer")
@@ -74,15 +114,24 @@ class Sortie
      */
     private $users;
 
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Ville", inversedBy="lieux", cascade={"persist"})
+     */
+        private $ville;
+
+
     /**
      * Sortie constructor.
      */
     public function __construct()
     {
         $this->users = new ArrayCollection();
-//        $e = new Etat();
-//        $e->setLibelle("Créée");
-//        $this->etat = $e;
+
+        $e = new Etat();
+        $e->setLibelle('Créée');
+        $this->etat = $e;
+        $inscriptionOuverte = false;
     }
 
 
@@ -268,6 +317,22 @@ class Sortie
     }
 
 
+
+    /**
+     * @return mixed
+     */
+    public function getVille()
+    {
+        return $this->ville;
+    }
+
+    /**
+     * @param mixed $ville
+     */
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
+    }
 
 
 }

@@ -35,14 +35,14 @@ class SortieType extends AbstractType
                 'required' => true,
 
             ])
-            ->add('duree', IntegerType::class, [
-                'label' => 'Durée (en min, optionnel): ',
 
-
-            ])
             ->add('dateLimiteInscription', DateType::class, [
                 'required' => true,
                 'label' => 'Date limite d\'inscription',
+
+            ])
+            ->add('dateHeureFin', DateType::class, [
+                'label' => 'Date et heure de fin'
 
             ])
             ->add('nbInscriptionMax', IntegerType::class, [
@@ -68,8 +68,8 @@ class SortieType extends AbstractType
 ////                'label' =>'Code Postal :',
 ////                'required'=>true
 //            ])
-//            ->add('ville', VilleType::class)
-//
+            ->add('ville', VilleType::class)
+
             ;
     }
 
