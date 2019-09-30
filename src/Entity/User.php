@@ -240,21 +240,7 @@ class User implements UserInterface
         $this->actif = $actif;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getNoSite()
-    {
-        return $this->no_site;
-    }
 
-    /**
-     * @param mixed $no_site
-     */
-    public function setNoSite($no_site)
-    {
-        $this->no_site = $no_site;
-    }
 
     /**
      * @return mixed
