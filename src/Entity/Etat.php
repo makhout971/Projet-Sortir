@@ -33,6 +33,7 @@ class Etat
      */
     public function __construct()
     {
+      //  $this->libelle = new Libelle();
         $this->sorties = new ArrayCollection();
     }
 
@@ -44,13 +45,13 @@ class Etat
         return $this->id;
     }
 
-    /**
-     * @param identifiant $id
-     */
-    public function setId(identifiant $id)
-    {
-        $this->id = $id;
-    }
+//    /**
+//     * @param identifiant $id
+//     */
+//    public function setId($id)
+//    {
+//        $this->id = $id;
+//    }
 
        /**
      * @return mixed
