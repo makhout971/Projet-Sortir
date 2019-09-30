@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Repository\EtatRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -35,9 +36,48 @@ class Sortie
     private $dateHeureFin;
 
     /**
-     * @ORM\Column(type="date")
+     * @return mixed
+     */
+    public function getDateHeureFin()
+    {
+        return $this->dateHeureFin;
+    }
+
+    /**
+     * @param mixed $dateHeureFin
+     */
+    public function setDateHeureFin($dateHeureFin)
+    {
+        $this->dateHeureFin = $dateHeureFin;
+    }
+
+
+
+    /**
+     * @ORM\Column(type="datetime")
      */
     private $dateLimiteInscription;
+
+    /**
+     * @return mixed
+     */
+    public function getInscriptionOuverte()
+    {
+        return $this->inscriptionOuverte;
+    }
+
+    /**
+     * @param mixed $inscriptionOuverte
+     */
+    public function setInscriptionOuverte($inscriptionOuverte)
+    {
+        $this->inscriptionOuverte = $inscriptionOuverte;
+    }
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $inscriptionOuverte;
 
     /**
      * ORM\Column(type="integer")
@@ -74,15 +114,24 @@ class Sortie
      */
     private $users;
 
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Ville", inversedBy="lieux", cascade={"persist"})
+     */
+        private $ville;
+
+
     /**
      * Sortie constructor.
      */
     public function __construct()
     {
         $this->users = new ArrayCollection();
-//        $e = new Etat();
-//        $e->setLibelle("Créée");
-//        $this->etat = $e;
+
+        $e = new Etat();
+        $e->setLibelle('Créée');
+        $this->etat = $e;
+        $inscriptionOuverte = false;
     }
 
 
@@ -123,6 +172,21 @@ class Sortie
         $this->dateHeureDebut = $dateHeureDebut;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getDuree()
+    {
+        return $this->duree;
+    }
+
+    /**
+     * @param mixed $duree
+     */
+    public function setDuree($duree)
+    {
+        $this->duree = $duree;
+    }
 
     /**
      * @return mixed
@@ -252,23 +316,23 @@ class Sortie
         $this->users = $users;
     }
 
+
+
     /**
      * @return mixed
      */
-    public function getDateHeureFin()
+    public function getVille()
     {
-        return $this->dateHeureFin;
+        return $this->ville;
     }
 
     /**
-     * @param mixed $dateHeureFin
+     * @param mixed $ville
      */
-    public function setDateHeureFin($dateHeureFin)
+    public function setVille($ville)
     {
-        $this->dateHeureFin = $dateHeureFin;
+        $this->ville = $ville;
     }
-
-
 
 
 }

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Etat;
 use App\Entity\Lieu;
 use App\Entity\Sortie;
 use App\Form\LieuType;
@@ -23,6 +24,10 @@ class SortieController extends Controller
     public function addSortie(Request $request, EntityManagerInterface $em)
     {
         $sortie = new Sortie();
+        $sortie->setInscriptionOuverte(false);
+        $etatRepo = $this->getDoctrine()->getRepository(Etat::class);
+        $e = $etatRepo->find(1);
+        $sortie->setEtat($e);
         $sortieForm = $this->createForm(SortieType::class, $sortie);
 //        $lieu =new Lieu();
 //        $lieuForm = $this->createForm(LieuType::class,$lieu);
@@ -43,9 +48,9 @@ class SortieController extends Controller
             $em->persist($sortie);
             $em->flush();
 
-            $this-> addFlash("success","Sortie créée avec succès !");
+            $this-> addFlash("successSortie","Sortie créée avec succès !");
 //            TODO : redirige vers la page souhaitée
-//            return $this->redirectToRoute("");
+            return $this->redirectToRoute("sortie");
         }
 
         return $this->render('sortie/add.html.twig', [
