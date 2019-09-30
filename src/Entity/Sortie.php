@@ -80,6 +80,9 @@ class Sortie
     public function __construct()
     {
         $this->users = new ArrayCollection();
+//        $e = new Etat();
+//        $e->setLibelle("Créée");
+//        $this->etat = $e;
     }
 
 

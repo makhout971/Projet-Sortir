@@ -22,13 +22,10 @@ class SortieController extends Controller
     {
         $sortie = new Sortie();
         $sortieForm = $this->createForm(SortieType::class, $sortie);
-
-//        $etat = $this->getEtat();
-//        $sortie->setEtat($etat);
-//
+        //
         $site = $this->getUser()->getSite();
         $sortie->setSite($site);
-//
+
 //        $lieu = getSortie()->getLieu();
 //        $sortie->setLieu($lieu);
 
