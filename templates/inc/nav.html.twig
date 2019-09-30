@@ -4,6 +4,7 @@
         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
             <li><a href="{{ path('user_profil', {'id': app.user.id} ) }}">Mon Profil</a></li>
             <li><a href="{{ path('logout') }}">Se déconnecter</a></li>
+            <li><a href="{{ path('sortie') }}">Créer une sortie</a></li>
         {% else %}
             <li><a href="{{ path('login') }}">Se Connecter</a></li>
             <li><a href="{{ path('register') }}">S'inscrire</a></li>

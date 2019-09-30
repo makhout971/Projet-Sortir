@@ -18,7 +18,7 @@ class SortieController extends Controller
 {
 
     /**
-     * @Route("/add", name="sortie")
+     * @Route("/creer", name="sortie")
      */
     public function addSortie(Request $request, EntityManagerInterface $em)
     {
