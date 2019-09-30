@@ -50,7 +50,7 @@ class UserController extends Controller
         {
 
             return  $this->render('user/fail.html.twig', [
-                'controller_name' => 'UserController',
+//                'controller_name' => 'UserController',
             ]);
         }
 
@@ -117,6 +117,11 @@ class UserController extends Controller
 
             $em->persist($user);
             $em->flush();
+            $this->addFlash(
+                'succesRegister',
+                'Vous pouvez désormais vous connecter !'
+            );
+            return $this->redirectToRoute('login');
 
         }
 

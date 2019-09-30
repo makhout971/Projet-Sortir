@@ -36,7 +36,7 @@ class ProfilController extends Controller
             $em->flush();
             $this->addFlash(
                 'succesProfil',
-                'Votre profil a été modifié !'
+                'Vous pouvez maintenant vous connecter !'
             );
            return $this->redirectToRoute('user_home');
 
