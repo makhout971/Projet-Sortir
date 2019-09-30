@@ -240,6 +240,8 @@ class User implements UserInterface
         $this->actif = $actif;
     }
 
+
+
     /**
      * @return mixed
      */
