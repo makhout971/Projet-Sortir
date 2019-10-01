@@ -64,4 +64,13 @@ class SortieRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    // Repository
+//class CustomRepository extends EntityRepository
+//{
+//$qb = $this->createQueryBuilder('x');
+//    // Add query parts...
+//
+//return $qb->getQuery()->getResult();
+//}
 }
