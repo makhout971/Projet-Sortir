@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Lieu;
+use App\Entity\Site;
 use App\Entity\Sortie;
 use App\Entity\User;
 use App\Entity\Ville;
@@ -69,8 +70,13 @@ class SortieType extends AbstractType
 ////                'label' =>'Code Postal :',
 ////                'required'=>true
 //            ])
-            ->add('ville', VilleType::class)
+            ->add('site', EntityType::class, [
 
+                'class' => Site::class,
+                'choice_label' => 'nom',
+                'required' => true
+
+            ])
             ;
     }
 
