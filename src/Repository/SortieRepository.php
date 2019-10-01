@@ -47,4 +47,10 @@ class SortieRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function inscriptionSortie()
+    {
+        
+
+    }
 }

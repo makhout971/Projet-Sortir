@@ -58,7 +58,24 @@ class SortieController extends Controller
         ]);
     }
 
+public function inscriptionSortie($id)
+{
+    $em = $this->getDoctrine()->getManager();
+    $sortieRepo = $em->getRepository(Sortie::class);
+    $sortie = $sortieRepo->find($id);
 
+    $userconnecte = $this->getUser();
+
+    $sortie->getUsers()->add($userconnecte);
+
+
+    $this->addFlash("successInscription", "Vous êtes bien inscrit !");
+
+   //return $this->render();
+
+
+
+}
 
 
 

@@ -5,11 +5,9 @@
 #header
 {
     background-color: lightblue;
-    left: 0;
-    right: 0;
-    text-align: center;
 
-    top: 0;
+
+
     font-family: sans-serif;
 
 
@@ -43,8 +41,9 @@
 
 nav li
 {
-    display: inline-block;
-    margin: 0 60px;
+    display: inline;
+    margin: 0 100px;
+
 
 
 }
