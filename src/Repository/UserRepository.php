@@ -24,15 +24,14 @@ class UserRepository extends ServiceEntityRepository
     public function totalUsersInscrits()
     {
         try {
-            return $this->createQueryBuilder('u')
-                ->select('COUNT(u)')
+            $qb = $this->createQueryBuilder('s')
+                ->select('count(s)')
                 ->getQuery()
                 ->getSingleScalarResult();
         } catch (NonUniqueResultException $e) {
         }
+        return $qb;
     }
-
-
 
 
 
