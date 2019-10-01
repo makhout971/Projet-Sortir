@@ -6,11 +6,19 @@
 
   {% if   app.user   %}
     <h5> Bienvenue {{ app.user.username }} </h5>
+
+
   {% endif %}
+
 
 {% endblock %}
 
 {% block body %}
+
+    {% if not is_granted('IS_AUTHENTICATED_FULLY')   %}
+  <h2> Déjà {{ users}} utilisateurs inscrits et {{ sorties }} sorties organisées</h2>
+    {% endif %}
+
   {% for flashMessage in app.session.flashbag.get('succesRegister') %}
     <div>
       {{ flashMessage }}

@@ -14,15 +14,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 class UserController extends Controller
 {
-    /**
-     * @Route("/",  name="user_home")
-     */
-    public function home()
-    {
-        return $this->render('user/home.html.twig', [
-            'controller_name' => 'UserController',
-        ]);
-    }
+
 
     /**
      * @Route("/login", name="login")

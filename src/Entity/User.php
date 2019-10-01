@@ -87,6 +87,8 @@ class User implements UserInterface
      */
     private $sortiesOrganisateur;
 
+
+
     /**
      * @return mixed
      */

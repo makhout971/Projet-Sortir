@@ -25,6 +25,7 @@ class Sortie
      */
     private $nom;
 
+
     /**
      * @ORM\Column(type="datetime")
      */
@@ -132,6 +133,7 @@ class Sortie
         $e->setLibelle('Créée');
         $this->etat = $e;
         $inscriptionOuverte = false;
+
     }
 
 
