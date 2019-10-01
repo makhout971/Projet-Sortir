@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\NonUniqueResultException;
 
 /**
  * @method EntiteTest|null find($id, $lockMode = null, $lockVersion = null)
@@ -20,6 +21,17 @@ class UserRepository extends ServiceEntityRepository
     }
 
 
+    public function totalUsersInscrits()
+    {
+        try {
+            $qb = $this->createQueryBuilder('s')
+                ->select('count(s)')
+                ->getQuery()
+                ->getSingleScalarResult();
+        } catch (NonUniqueResultException $e) {
+        }
+        return $qb;
+    }
 
 
 

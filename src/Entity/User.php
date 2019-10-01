@@ -9,7 +9,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @UniqueEntity(fields="username")
+ * @UniqueEntity(fields="username", message="Pseudo non valide.")
+ * @UniqueEntity(fields="email", message="Veuillez utiliser une autre adresse mail.")
  * @ORM\Table(name="users")
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
@@ -87,6 +88,8 @@ class User implements UserInterface
      * @ORM\OneToMany(targetEntity="App\Entity\Sortie", mappedBy="userOrganisateur")
      */
     private $sortiesOrganisateur;
+
+
 
     /**
      * @return mixed

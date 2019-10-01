@@ -52,3 +52,11 @@ a
 {
     text-decoration: none;
 }
+
+.grisee {
+    background-color: #868686;
+}
+
+#grisee {
+    color: darkred;
+}

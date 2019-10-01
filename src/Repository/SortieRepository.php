@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Sortie;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\NonUniqueResultException;
 
 /**
  * @method Sortie|null find($id, $lockMode = null, $lockVersion = null)
@@ -18,6 +19,22 @@ class SortieRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Sortie::class);
     }
+
+
+    public function totalSortiesOrganisees()
+    {
+        try {
+            $qb = $this->createQueryBuilder('s')
+                ->select('count(s)')
+                ->getQuery()
+                ->getSingleScalarResult();
+        } catch (NonUniqueResultException $e) {
+        }
+        return $qb;
+    }
+
+
+
 
     // /**
     //  * @return Sortie[] Returns an array of Sortie objects
@@ -48,9 +65,12 @@ class SortieRepository extends ServiceEntityRepository
     }
     */
 
-    public function inscriptionSortie()
-    {
-        
-
-    }
+    // Repository
+//class CustomRepository extends EntityRepository
+//{
+//$qb = $this->createQueryBuilder('x');
+//    // Add query parts...
+//
+//return $qb->getQuery()->getResult();
+//}
 }
