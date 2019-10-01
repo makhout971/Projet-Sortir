@@ -111,9 +111,19 @@ class Sortie
     private $userOrganisateur;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="sorties")
+     * @ORM\ManyToMany(targetEntity="App\Entity\User")
+     * * @ORM\JoinTable(name="sorties_des_users",
+     *     joinColumns={
+     *      @ORM\JoinColumn(
+     *          name="id_de_la_sortie",
+     *          referencedColumnName="id"
+     *     )
+     *     },
+     * )
      */
     private $users;
+
+
 
 
     /**
