@@ -77,6 +77,19 @@ public function inscriptionSortie($id)
 
 }
 
+    /**
+     * @Route ("/afficher", name="afficherSorties")
+     */
+    public function listeSorties()
+    {
+        $repository = $this->getDoctrine()->getRepository(Sortie::class);
+        $toutesLesSorties = $repository->findAll();
+
+        return $this->render('sortie/display.html.twig', [
+
+            'entities' => $toutesLesSorties
+        ]);
+    }
 
 
 }
