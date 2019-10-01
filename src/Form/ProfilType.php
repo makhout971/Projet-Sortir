@@ -26,9 +26,10 @@ class ProfilType extends AbstractType
             ->add('username', TextType::class,[
                 'label' => 'Pseudo',
                 'attr' => [
-                    'readOnly' => 'true'
+                    'readOnly' => 'true',
+                    'class' => 'grisee'
+                ],
 
-                ]
             ])
             ->add('prenom', TextType::class,[
                 'label' => 'Prénom',

@@ -133,7 +133,7 @@ class Sortie
         $e->setLibelle('Créée');
         $this->etat = $e;
         $inscriptionOuverte = false;
-        self::$nmbTotalDeSortiesDansLAppli++;
+
     }
 
 
