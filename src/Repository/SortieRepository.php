@@ -21,10 +21,10 @@ class SortieRepository extends ServiceEntityRepository
 
 
 
-    public function totalUsersInscrits()
+    public function totalSortiesOrganisees()
     {
         return $this->createQueryBuilder('s')
-            ->select('COUNT(s)')
+            ->select('COUNT(s.id)')
             ->getQuery()
             ->getSingleScalarResult();
     }
