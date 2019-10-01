@@ -1,16 +1,13 @@
 #body {
-    background-color: beige;
+
 }
 
 #header
 {
     background-color: lightblue;
-    position: relative;
-    left: 0;
-    right: 0;
-    text-align: center;
-    padding: 60px;
-    top: 0;
+
+
+
     font-family: sans-serif;
 
 
@@ -44,8 +41,9 @@
 
 nav li
 {
-    display: inline-block;
-    margin: 0 60px;
+    display: inline;
+    margin: 0 100px;
+
 
 
 }

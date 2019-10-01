@@ -79,7 +79,8 @@ class User implements UserInterface
     private $site;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Sortie", mappedBy="users")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Sortie")
+     *
      */
     private $sorties;
 
@@ -274,6 +275,7 @@ class User implements UserInterface
     public function __construct()
     {
         $this->sortiesOrganisateur = new ArrayCollection();
+        $this->sorties = new ArrayCollection();
         $this->admin = 0;
         $this->actif = 0;
     }
