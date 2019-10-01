@@ -50,7 +50,7 @@ class SortieController extends Controller
 
             $this-> addFlash("successSortie","Sortie créée avec succès !");
 //            TODO : redirige vers la page souhaitée
-            return $this->redirectToRoute("sortie");
+            return $this->redirectToRoute("user_home");
         }
 
         return $this->render('sortie/add.html.twig', [
