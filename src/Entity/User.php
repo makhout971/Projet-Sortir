@@ -87,10 +87,7 @@ class User implements UserInterface
      */
     private $sortiesOrganisateur;
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $nmbTotalInscritsDansLAppli;
+
 
     /**
      * @return mixed
