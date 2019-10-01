@@ -48,7 +48,7 @@ class SortieController extends Controller
             $em->persist($sortie);
             $em->flush();
 
-            $this-> addFlash("successSortie","Sortie créée avec succès !");
+            $this-> addFlash("                  ","Sortie créée avec succès !");
 //            TODO : redirige vers la page souhaitée
             return $this->redirectToRoute("sortie");
         }
@@ -59,6 +59,9 @@ class SortieController extends Controller
     }
 
 
+    /**
+     *
+     */
 
 
 

@@ -47,7 +47,8 @@ class SortieType extends AbstractType
             ])
             ->add('nbInscriptionMax', IntegerType::class, [
                 'label' => 'Nombre max de participants : ',
-                'required' => true
+                'required' => true,
+//                'min' => 1
             ])
             ->add('infosSortie', TextType::class, [
                 'label' => 'Résumé de l\'évènement ',

@@ -26,6 +26,12 @@ class Sortie
     private $nom;
 
     /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $nmbTotalDeSortiesDansLAppli;
+
+
+    /**
      * @ORM\Column(type="datetime")
      */
     private $dateHeureDebut;
