@@ -6,9 +6,20 @@
        <h2>{{ flashMessage }}</h2>
         </div>
         {%  endfor %}
+        {% for flashMessage in app.session.flashbag.get('successDesInscription') %}
+            <div style="color: darkgreen" style="font-weight: bold">
+                <h2>{{ flashMessage }}</h2>
+            </div>
+        {%  endfor %}
+
+
 
         <ul>
             {% for sortie in entities %}
+                {% set userInscritSortie = false %}
+                {% if sortie.Users.contains(app.user) %}
+                {% set userInscritSortie = true %}
+                {% endif %}
                 <li>{{ sortie.nom }}</li>
                 <li>{{ sortie.dateHeureDebut.date }}</li>
                 <li>{{ sortie.dateLimiteInscription.date}}</li>
@@ -20,9 +31,14 @@
 
 
                 <li> <a href="{{ path('afficherUneSortie',{'id' :  sortie.id}) }}"> Afficher</a> </li>
-{#               {% if  sortie.etat.id == 2 %}#}
+               {% if  sortie.etat.id == 1 and userInscritSortie==false %}
                 <li onclick="confirm('Confirmez votre inscription')"> <a href="{{ path('inscriptionSortie',{'id' :  sortie.id}) }}"> S'inscrire</a> </li>
-{#                {% endif %}#}
+             {% endif %}
+                {% if  sortie.etat.id == 1 and userInscritSortie==true %}
+                    <li onclick="confirm('Confirmez votre désinscription')"> <a href="{{ path('desinscriptionSortie',{'id' :  sortie.id}) }}"> Se désinscrire</a> </li>
+
+
+                {% endif %}
                 <br>
             {% endfor %}
         </ul>

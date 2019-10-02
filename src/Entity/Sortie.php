@@ -140,7 +140,7 @@ class Sortie
         $this->users = new ArrayCollection();
 
         $e = new Etat();
-        $e->setLibelle('Créée');
+        $e->setLibelle('Ouverte');
         $this->etat = $e;
         $inscriptionOuverte = false;
 
