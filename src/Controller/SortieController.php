@@ -60,7 +60,8 @@ class SortieController extends Controller
 
 
     /**
-     * @Route()
+     * @Route("/inscription/{id}", name="inscriptionSortie")
+     *  requirements={"id": "\d+"}
      */
 public function inscriptionSortie($id)
 {
@@ -75,7 +76,7 @@ public function inscriptionSortie($id)
 
     $this->addFlash("successInscription", "Vous êtes bien inscrit !");
 
-   //return $this->render();
+   return $this->render('sortie/display.html.twig');
 }
 
     /**
