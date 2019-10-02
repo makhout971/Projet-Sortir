@@ -58,6 +58,10 @@ class SortieController extends Controller
         ]);
     }
 
+
+    /**
+     * @Route()
+     */
 public function inscriptionSortie($id)
 {
     $em = $this->getDoctrine()->getManager();
@@ -72,9 +76,6 @@ public function inscriptionSortie($id)
     $this->addFlash("successInscription", "Vous êtes bien inscrit !");
 
    //return $this->render();
-
-
-
 }
 
     /**
@@ -88,6 +89,22 @@ public function inscriptionSortie($id)
         return $this->render('sortie/display.html.twig', [
 
             'entities' => $toutesLesSorties
+        ]);
+    }
+
+
+    /**
+     * @Route ("/afficher/{id}", name="afficherUneSortie")
+     *  requirements={"id": "\d+"}
+     */
+    public function uneSortie($id)
+    {
+        $repository = $this->getDoctrine()->getRepository(Sortie::class);
+        $sortie = $repository->find($id);
+
+        return $this->render('sortie/detail.html.twig', [
+
+            'sortie' => $sortie
         ]);
     }
 
