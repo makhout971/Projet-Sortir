@@ -20,9 +20,9 @@
 
 
                 <li> <a href="{{ path('afficherUneSortie',{'id' :  sortie.id}) }}"> Afficher</a> </li>
-               {% if  sortie.etat.id == 2 %}
-                <li> <a href="{{ path('inscriptionSortie',{'id' :  sortie.id}) }}"> S'inscrire</a> </li>
-                {% endif %}
+{#               {% if  sortie.etat.id == 2 %}#}
+                <li onclick="confirm('Confirmez votre inscription')"> <a href="{{ path('inscriptionSortie',{'id' :  sortie.id}) }}"> S'inscrire</a> </li>
+{#                {% endif %}#}
                 <br>
             {% endfor %}
         </ul>

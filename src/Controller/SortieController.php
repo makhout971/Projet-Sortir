@@ -68,6 +68,7 @@ public function inscriptionSortie($id)
     $em = $this->getDoctrine()->getManager();
     $sortieRepo = $em->getRepository(Sortie::class);
     $sortie = $sortieRepo->find($id);
+    $sorties = $sortieRepo->findAll();
 
     $userconnecte = $this->getUser();
 
@@ -76,7 +77,9 @@ public function inscriptionSortie($id)
 
     $this->addFlash("successInscription", "Vous êtes bien inscrit !");
 
-   return $this->render('sortie/display.html.twig');
+   return $this->render('sortie/display.html.twig',[
+    "entities" =>$sorties
+    ]);
 }
 
     /**
