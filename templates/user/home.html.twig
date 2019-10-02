@@ -17,13 +17,19 @@
 
     {% if not is_granted('IS_AUTHENTICATED_FULLY')   %}
   <h2> Déjà {{ users}} utilisateurs inscrits et {{ sorties }} sorties organisées</h2>
+      {% else %}
+          {% for flashMessage in app.session.flashbag.get('successSortie') %}
+
+                  <div style="background-color: yellow" style="color: darkviolet">
+                  {{ flashMessage }}
+
+              </div>
+          {% endfor %}
+
+
     {% endif %}
 
-  {% for flashMessage in app.session.flashbag.get('succesRegister') %}
-    <div>
-      {{ flashMessage }}
-    </div>
-  {% endfor %}
+
 {% endblock %}
 
 

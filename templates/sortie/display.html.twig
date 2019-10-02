@@ -1,6 +1,12 @@
 {% extends 'layout.html.twig' %}
 
     {% block body %}
+        {% for flashMessage in app.session.flashbag.get('successInscription') %}
+        <div style="color: darkgreen" style="font-weight: bold">
+       <h2>{{ flashMessage }}</h2>
+        </div>
+        {%  endfor %}
+
         <ul>
             {% for sortie in entities %}
                 <li>{{ sortie.nom }}</li>
@@ -8,9 +14,16 @@
                 <li>{{ sortie.dateLimiteInscription.date}}</li>
 {#                TODO: chercher nb d'inscrits en base#}
                 <li>{{ sortie.nbInscriptionMax }}</li>
-                <li>{{ sortie.etat }}</li>
+                <li>{{ sortie.etat.libelle }}</li>
 {#                TODO: chercher si utilisateur en session inscrit#}
-                <li>{{ sortie.userOrganisateur.nom }}</li>
+                <li>{{ sortie.userOrganisateur.username }} </li>
+
+
+                <li> <a href="{{ path('afficherUneSortie',{'id' :  sortie.id}) }}"> Afficher</a> </li>
+               {% if  sortie.etat.id == 2 %}
+                <li> <a href="{{ path('inscriptionSortie',{'id' :  sortie.id}) }}"> S'inscrire</a> </li>
+                {% endif %}
+                <br>
             {% endfor %}
         </ul>
 

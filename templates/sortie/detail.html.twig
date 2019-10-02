@@ -1,0 +1,28 @@
+{% extends 'layout.html.twig' %}
+
+    {% block body %}
+        <ul>
+
+                <li>{{ sortie.nom }}</li>
+                <li>{{ sortie.dateHeureDebut.date }}</li>
+                <li>{{ sortie.dateLimiteInscription.date}}</li>
+             <li>{{ sortie.infosSortie }}</li>
+{#                TODO: chercher nb d'inscrits en base#}
+                <li>{{ sortie.nbInscriptionMax }}</li>
+                <li>{{ sortie.etat.libelle }}</li>
+{#                TODO: chercher si utilisateur en session inscrit#}
+                <li>{{ sortie.userOrganisateur.username }} </li>
+
+
+{#                <li> <a href="{{ path('afficherUneSortie',{'id' :  sortie.id}) }}"> Afficher</a> </li>#}
+                <br>
+
+        </ul>
+
+
+{#        <button><a href="{{ path('sortie') }}">Créer une sortie</a></button>#}
+
+    {% endblock %}
+
+
+

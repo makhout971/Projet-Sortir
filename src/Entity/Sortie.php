@@ -299,7 +299,7 @@ class Sortie
     /**
      * @return ArrayCollection
      */
-    public function getUsers(): ArrayCollection
+    public function getUsers()
     {
         return $this->users;
     }
