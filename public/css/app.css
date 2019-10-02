@@ -7,8 +7,8 @@
     background-color: lightblue;
 
 
-
     font-family: sans-serif;
+    text-align: center;
 
 
 }
@@ -22,6 +22,8 @@
     right: 0;
     height: 100px;
     text-align: center;
+    font-family: sans-serif;
+
 }
 
 #nav
@@ -60,3 +62,26 @@ a
 #grisee {
     color: darkred;
 }
+
+input
+{
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border-radius: 1px;
+    font-family: sans-serif;
+}
+
+
+label
+{
+    font-family: sans-serif;
+}
+
+#btnRegister
+{
+    width: 150px;
+    border-radius: 3px;
+    margin-left: 200px;
+    margin-top: 20px;
+}
+

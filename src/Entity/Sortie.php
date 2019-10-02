@@ -187,22 +187,6 @@ class Sortie
     /**
      * @return mixed
      */
-    public function getDuree()
-    {
-        return $this->duree;
-    }
-
-    /**
-     * @param mixed $duree
-     */
-    public function setDuree($duree)
-    {
-        $this->duree = $duree;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getDateLimiteInscription()
     {
         return $this->dateLimiteInscription;
