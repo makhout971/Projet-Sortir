@@ -75,7 +75,7 @@ class SortieController extends Controller
                 $userDansSortie = true;
             }
         }
-
+dump($toutesLesSorties);
         return $this->render('sortie/display.html.twig', [
 
             'entities' => $toutesLesSorties,
