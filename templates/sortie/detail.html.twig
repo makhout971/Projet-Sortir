@@ -18,6 +18,13 @@
                 <br>
 
         </ul>
+       Listes des participants :
+            <br>
+            <ul>
+                {% for u in sortie.users %}
+                    <li><a href="{{ path('user_profil', {'id': u.id}) }}"> {{ u.username }} </a></li>
+                {% endfor %}
+            </ul>
 
 
 {#        <button><a href="{{ path('sortie') }}">Créer une sortie</a></button>#}
