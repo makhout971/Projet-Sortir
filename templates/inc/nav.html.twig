@@ -1,18 +1,24 @@
 <nav id="nav">
-    <ul id="navUl">
-        <li><a href="{{ path('user_home') }}">Accueil</a></li>
+ <div id="navDiv">   <ul id="navUl">
+        <li class="navLi"><a class="navLiA" href="{{ path('user_home') }}">Accueil</a></li>
 
         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-            <li><a href="{{ path('user_profil', {'id': app.user.id} ) }}">Mon Profil</a></li>
-            <li><a href="{{ path('logout') }}">Se déconnecter</a></li>
+            <li class="navLi"><a class="navLiA" href="{{ path('user_profil', {'id': app.user.id} ) }}">Mon Profil</a></li>
+            <li class="navLi"><a class="navLiA" href="{{ path('logout') }}">Se déconnecter</a></li>
 
-            <h2> Hello {{  app.user.username  }} !</h2>
+
         {% else %}
-            <li><a href="{{ path('login') }}">Se Connecter</a></li>
-            <li><a href="{{ path('register') }}">S'inscrire</a></li>
+            <li class="navLi"><a class="navLiA" href="{{ path('login') }}">Se Connecter</a></li>
+            <li class="navLi"><a class="navLiA" href="{{ path('register') }}">S'inscrire</a></li>
         {% endif %}
 
-    </ul>
+    </ul></div>
 {#    , {'id': app.user.id}#}
 
+</nav>
+
+<nav>
+    {% if is_granted('IS_AUTHENTICATED_REMEMBER') %}
+    <h2> Hello {{  app.user.username  }} !</h2>
+    {% endif %}
 </nav>
