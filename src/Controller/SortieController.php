@@ -74,6 +74,7 @@ public function inscriptionSortie($id)
 
     $sortie->getUsers()->add($userconnecte);
 
+    $em->flush();
 
     $this->addFlash("successInscription", "Vous êtes bien inscrit !");
 
