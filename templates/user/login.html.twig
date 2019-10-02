@@ -7,9 +7,13 @@
 
 {% block body %}
     {% for flashMessage in app.session.flashbag.get('succesRegister') %}
-    <div>
+    <div style="color: darkgreen" style="font-weight: bold">
         {{ flashMessage }}
     </div>
+
+        <div>
+            <img src="{{ asset('img/tchin.jpg')}}" width="450px">
+        </div>
     {% endfor %}
 
     <form method="post" >
