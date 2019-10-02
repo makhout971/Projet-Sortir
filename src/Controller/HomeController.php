@@ -50,5 +50,9 @@ class HomeController extends Controller
         ]);
     }
 
+    protected function createFormBuilder($data = null, array $options = [])
+    {
+    }
+
 
 }
