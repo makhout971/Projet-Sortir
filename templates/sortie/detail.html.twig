@@ -22,7 +22,11 @@
             <br>
             <ul>
                 {% for u in sortie.users %}
-                    <li><a href="{{ path('other_user', {'id': u.id}) }}"> {{ u.username }} </a></li>
+                    {% if app.user.id == u.id %}
+                        <li><a href="{{ path('user_profil', {'id': u.id}) }}"> {{ u.username }} </a></li>
+                    {% else %}
+                     <li><a href="{{ path('other_user', {'id': u.id}) }}"> {{ u.username }} </a></li>
+                    {% endif %}
                 {% endfor %}
             </ul>
 

@@ -4,6 +4,8 @@
 
         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
             <li class="navLi"><a class="navLiA" href="{{ path('user_profil', {'id': app.user.id} ) }}">Mon Profil</a></li>
+            <li class="navLi"><a class="navLiA" href="{{ path('sortie') }}">Organiser une sortie</a></li>
+            <li class="navLi"><a class="navLiA" href="{{ path('afficherSorties') }}">Les sorties</a></li>
             <li class="navLi"><a class="navLiA" href="{{ path('logout') }}">Se déconnecter</a></li>
 
 

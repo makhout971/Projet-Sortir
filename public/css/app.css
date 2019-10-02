@@ -62,15 +62,11 @@ label
     margin-top: 20px;
 }
 
-#navDiv
-{
-    width: 100%;
-}
 
 
 #navUl{
     display: table;
-    
+    width: 100%;
     margin: 100px auto;
     padding: 0;
     background: linear-gradient(deepskyblue, dodgerblue);
