@@ -16,7 +16,7 @@
 {% block body %}
 
     {% if not is_granted('IS_AUTHENTICATED_FULLY')   %}
-  <h2> Déjà {{ users}} utilisateurs inscrits et {{ sorties }} sorties organisées</h2>
+  <h2> Déjà {{ users }} utilisateurs inscrits et {{ sorties }} sorties organisées</h2>
       {% else %}
           {% for flashMessage in app.session.flashbag.get('successSortie') %}
 
