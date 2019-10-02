@@ -49,4 +49,18 @@ class ProfilController extends Controller
             "user" => $user
         ]);
     }
+
+
+    /**
+     * @Route("/profil/{id}", name="other_user")
+     */
+    public function viewProfil($id)
+    {
+        $userRepo = $this->getDoctrine()->getRepository(User::class);
+        $user = $userRepo->find($id);
+        return $this->render('user/otherProfil.html.twig', [
+
+            "user" => $user
+        ]);
+    }
 }
