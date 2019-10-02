@@ -17,43 +17,19 @@
 
     {% if not is_granted('IS_AUTHENTICATED_FULLY')   %}
   <h2> Déjà {{ users}} utilisateurs inscrits et {{ sorties }} sorties organisées</h2>
-    {% endif %}
+      {% else %}
+          {% for flashMessage in app.session.flashbag.get('successSortie') %}
 
-  {% for flashMessage in app.session.flashbag.get('succesRegister') %}
-    <div>
-      {{ flashMessage }}
-    </div>
-  {% endfor %}
+                  <div style="background-color: yellow" style="color: darkviolet">
+                  {{ flashMessage }}
 
-
-    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-
-        <ul>
-            {% for sortie in entities %}
-                <li>{{ sortie.nom }}</li>
-                <li>{{ sortie.dateHeureDebut.date }}</li>
-                <li>{{ sortie.dateLimiteInscription.date}}</li>
-                {#                TODO: chercher nb d'inscrits en base#}
-                <li>{{ sortie.nbInscriptionMax }}</li>
-                <li>{{ sortie.etat }}</li>
-                {#                TODO: chercher si utilisateur en session inscrit#}
-                <li>{{ sortie.userOrganisateur.nom }}</li>
-            {% endfor %}
-        </ul>
-
-
-
-
-
-        <button><a href="{{ path('sortie') }}">Créer une sortie</a></button>
+              </div>
+          {% endfor %}
 
 
     {% endif %}
 
 
 {% endblock %}
-
-
-
 
 
