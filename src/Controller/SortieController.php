@@ -60,40 +60,26 @@ class SortieController extends Controller
 
 
     /**
-     * @Route("/inscription/{id}", name="inscriptionSortie")
-     *  requirements={"id": "\d+"}
-     */
-public function inscriptionSortie($id)
-{
-    $em = $this->getDoctrine()->getManager();
-    $sortieRepo = $em->getRepository(Sortie::class);
-    $sortie = $sortieRepo->find($id);
-    $sorties = $sortieRepo->findAll();
-
-    $userconnecte = $this->getUser();
-
-    $sortie->getUsers()->add($userconnecte);
-
-    $em->flush();
-
-    $this->addFlash("successInscription", "Vous êtes bien inscrit !");
-
-   return $this->render('sortie/display.html.twig',[
-    "entities" =>$sorties
-    ]);
-}
-
-    /**
      * @Route ("/afficher", name="afficherSorties")
      */
     public function listeSorties()
     {
+        $userDansSortie = false;
         $repository = $this->getDoctrine()->getRepository(Sortie::class);
         $toutesLesSorties = $repository->findAll();
 
+        foreach ($toutesLesSorties as $sortie)
+        {
+            if ($sortie->getUsers()->contains($this->getUser()))
+            {
+                $userDansSortie = true;
+            }
+        }
+
         return $this->render('sortie/display.html.twig', [
 
-            'entities' => $toutesLesSorties
+            'entities' => $toutesLesSorties,
+            'bool' => $userDansSortie
         ]);
     }
 
@@ -114,4 +100,52 @@ public function inscriptionSortie($id)
     }
 
 
+    /**
+     * @Route("/inscription/{id}", name="inscriptionSortie")
+     *  requirements={"id": "\d+"}
+     */
+    public function inscriptionSortie($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $sortieRepo = $em->getRepository(Sortie::class);
+        $sortie = $sortieRepo->find($id);
+        $sorties = $sortieRepo->findAll();
+
+        $userconnecte = $this->getUser();
+
+        $sortie->getUsers()->add($userconnecte);
+
+        $em->flush();
+
+        $this->addFlash("successDesInscription", "Vous êtes bien inscrit(e) !");
+
+        return $this->render('sortie/display.html.twig',[
+            "entities" =>$sorties
+        ]);
+    }
+
+
+    /**
+     * @Route("/desincription/{id}", name="desinscriptionSortie")
+     *  requirements={"id": "\d+"}
+     */
+    public function desInscriptionSortie($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $sortieRepo = $em->getRepository(Sortie::class);
+        $sortie = $sortieRepo->find($id);
+        $sorties = $sortieRepo->findAll();
+
+        $userconnecte = $this->getUser();
+
+        $sortie->getUsers()->removeElement($userconnecte);
+
+        $em->flush();
+
+        $this->addFlash("successDesInscription", "Vous êtes bien désinscrit(e) !");
+
+        return $this->render('sortie/display.html.twig',[
+            "entities" =>$sorties
+        ]);
+    }
 }
