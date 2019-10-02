@@ -20,6 +20,13 @@ class HomeController extends Controller
         $users = $userRepo->totalUsersInscrits();
         $sorties = $sortieRepo->totalSortiesOrganisees();
 
+        $repository = $this->getDoctrine()->getRepository(Sortie::class);
+        $toutesLesSorties = $repository->findAll();
+
+        return $this->render('user/home.html.twig', [
+
+            'entities' => $toutesLesSorties
+        ]);
         dump($users);
         dump($sorties);
 
@@ -28,5 +35,20 @@ class HomeController extends Controller
             'sorties' => $sorties,
         ]);
     }
+
+    /**
+     * @Route ("/afficher", name="afficherSorties")
+     */
+    public function listeSorties()
+    {
+        $repository = $this->getDoctrine()->getRepository(Sortie::class);
+        $toutesLesSorties = $repository->findAll();
+
+        return $this->render('user/home.html.twig', [
+
+            'entities' => $toutesLesSorties
+        ]);
+    }
+
 
 }

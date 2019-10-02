@@ -24,6 +24,36 @@
       {{ flashMessage }}
     </div>
   {% endfor %}
+
+
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+
+        <ul>
+            {% for sortie in entities %}
+                <li>{{ sortie.nom }}</li>
+                <li>{{ sortie.dateHeureDebut.date }}</li>
+                <li>{{ sortie.dateLimiteInscription.date}}</li>
+                {#                TODO: chercher nb d'inscrits en base#}
+                <li>{{ sortie.nbInscriptionMax }}</li>
+                <li>{{ sortie.etat }}</li>
+                {#                TODO: chercher si utilisateur en session inscrit#}
+                <li>{{ sortie.userOrganisateur.nom }}</li>
+            {% endfor %}
+        </ul>
+
+
+
+
+
+        <button><a href="{{ path('sortie') }}">Créer une sortie</a></button>
+
+
+    {% endif %}
+
+
 {% endblock %}
+
+
+
 
 

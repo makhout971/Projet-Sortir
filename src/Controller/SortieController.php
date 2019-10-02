@@ -29,14 +29,11 @@ class SortieController extends Controller
         $e = $etatRepo->find(1);
         $sortie->setEtat($e);
         $sortieForm = $this->createForm(SortieType::class, $sortie);
-//        $lieu =new Lieu();
-//        $lieuForm = $this->createForm(LieuType::class,$lieu);
-        //
+
         $site = $this->getUser()->getSite();
         $sortie->setSite($site);
 
-//        $lieu = getSortie()->getLieu();
-//        $sortie->setLieu($lieu);
+
 
         $user = $this->getUser();
         $sortie->setUserOrganisateur($user);
@@ -71,25 +68,12 @@ public function inscriptionSortie($id)
 
     $this->addFlash("successInscription", "Vous êtes bien inscrit !");
 
-   //return $this->render();
 
 
 
 }
 
-    /**
-     * @Route ("/afficher", name="afficherSorties")
-     */
-    public function listeSorties()
-    {
-        $repository = $this->getDoctrine()->getRepository(Sortie::class);
-        $toutesLesSorties = $repository->findAll();
 
-        return $this->render('sortie/display.html.twig', [
-
-            'entities' => $toutesLesSorties
-        ]);
-    }
 
 
 }
