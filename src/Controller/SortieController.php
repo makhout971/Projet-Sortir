@@ -68,21 +68,24 @@ class SortieController extends Controller
     public function supprimerSortie($id, EntityManagerInterface $em)
     {
         $message = null;
+
         $sortieRepo = $this->getDoctrine()->getRepository(Sortie::class);
         $etatRepo = $this->getDoctrine()->getRepository(Etat::class);
         $etatCloture = $etatRepo->find(6);
+
         $sortie = $sortieRepo->find($id);
         $sorties = $sortieRepo->findAll();
-        $sortie->setEtat($etatCloture);
-        $sorties = $sortieRepo->findAll();
-
-
-        $em->persist($sortie);
-        $em ->flush();
-
+        if ($sortie->getEtat()->getId() == $etatRepo->find(2)->getId()){
+            $sortie->setEtat($etatCloture);
+            $sorties = $sortieRepo->findAll();
+            $em->persist($sortie);
+            $em ->flush();
+            $message = "Votre sortie \"".$sortie->getNom() . "\" a été annulée.";
+        }
+        else{
+            $message = "Vous ne pouvez pas annuler une sortie passée et/ou dont les inscriptions sont clôturées";
+        }
      //   $this->addFlash("annulation", "Votre sortie a été annulée");
-        $message = "Votre sortie \"".$sortie->getNom() . "\" a été annulée.";
-
         return $this->render('sortie/display.html.twig', [
             "message" => $message,
             "entities" => $sorties
