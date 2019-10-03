@@ -24,6 +24,7 @@ class SortieController extends Controller
      */
     public function addSortie(Request $request, EntityManagerInterface $em)
     {
+        $message = null;
         $sortie = new Sortie();
         $sortie->setInscriptionOuverte(true);
         $etatRepo = $this->getDoctrine()->getRepository(Etat::class);
@@ -56,26 +57,36 @@ class SortieController extends Controller
 
         return $this->render('sortie/add.html.twig', [
             'sortieForm' => $sortieForm->createView(),
+            'message' => $message
         ]);
     }
 
 
     /**
-     * @Route("/annuler/{id} ", name="")
+     * @Route("/annuler/{id} ", name="annulerSortie")
      */
     public function supprimerSortie($id, EntityManagerInterface $em)
     {
+        $message = null;
         $sortieRepo = $this->getDoctrine()->getRepository(Sortie::class);
         $etatRepo = $this->getDoctrine()->getRepository(Etat::class);
         $etatCloture = $etatRepo->find(6);
         $sortie = $sortieRepo->find($id);
-        $sortie->setEtat($etatCloture->getLibelle());
+        $sorties = $sortieRepo->findAll();
+        $sortie->setEtat($etatCloture);
+        $sorties = $sortieRepo->findAll();
+
 
         $em->persist($sortie);
         $em ->flush();
 
-        $this->addFlash("annulation", "Votre sortie a été annulée");
+     //   $this->addFlash("annulation", "Votre sortie a été annulée");
+        $message = "Votre sortie \"".$sortie->getNom() . "\" a été annulée.";
 
+        return $this->render('sortie/display.html.twig', [
+            "message" => $message,
+            "entities" => $sorties
+        ]);
     }
 
     /**
@@ -83,6 +94,7 @@ class SortieController extends Controller
      */
     public function listeSorties(Request $request)
     {
+        $message = null;
         $userDansSortie = false;
         $repository = $this->getDoctrine()->getRepository(Sortie::class);
         $toutesLesSorties = $repository->findAll();
@@ -95,7 +107,7 @@ class SortieController extends Controller
         return $this->render('sortie/display.html.twig', [
 
             'entities' => $toutesLesSorties,
-
+            "message" => $message
         ]);
     }
 
@@ -106,22 +118,24 @@ class SortieController extends Controller
      */
     public function uneSortie($id)
     {
+        $message = null;
         $repository = $this->getDoctrine()->getRepository(Sortie::class);
         $sortie = $repository->find($id);
         $userconnecte = $this->getUser();
 
         if (  $sortie->getUsers()->contains($userconnecte) )
         {
-            $this->addFlash("echecInscriptionSortie", "Vous êtes déjà inscrit(e) à cette sortie");
+            $message = "Vous êtes déjà inscrit(e) à cette sortie !";
         }
-        elseif ( $sortie->getUsers()->count() == $sortie->getNbInscriptionMax() ){
-            $this->addFlash("palierInscritsMax", "Nombre inscrits max atteint !");
+       elseif ( $sortie->getUsers()->count() == $sortie->getNbInscriptionMax() ){
+           $message = "Nombre inscrits max atteint !";
         }
 
 
         return $this->render('sortie/detail.html.twig', [
 
-            'sortie' => $sortie
+            'sortie' => $sortie,
+            'message' => $message,
         ]);
     }
 
@@ -132,6 +146,7 @@ class SortieController extends Controller
      */
     public function inscriptionSortie($id)
     {
+        $message = null;
         $userconnecte = $this->getUser();
 
         $em = $this->getDoctrine()->getManager();
@@ -139,22 +154,30 @@ class SortieController extends Controller
         $sortie = $sortieRepo->find($id);
         $sorties = $sortieRepo->findAll();
 
-        foreach ($sorties as $s)
-        {
-            if (   $s->getUsers()->contains($userconnecte) )
-            {
-                $this->addFlash("echecInscriptionSortie", "Vous êtes déjà inscrit(e) à cette sortie");
-            }
-            elseif ( $s->getUsers()->count() == $s->getNbInscriptionMax() ){
-                $this->addFlash("palierInscritsMax", "Nombre inscrits max atteint !");
-            }
 
-            return $this->render('sortie/display.html.twig',[
-                "entities" =>$sorties
+        if (  $sortie->getUsers()->contains($userconnecte) )
+        {
+            $message = "Vous êtes déjà inscrit(e) à cette sortie (". $sortie->getNom() . ").";
+//            $this->addFlash("echecInscriptionSortie", "Vous êtes déjà inscrit(e) à cette sortie");
+            return $this->render('sortie/display.html.twig', [
+                "message" => $message,
+                "entities" => $sorties,
+            ]);
+
+        }
+        elseif ( $sortie->getNbInscriptionMax() == $sortie->getUsers()->count())
+        {
+            $message = "Nombre de participants max atteint pour cette sortie (". $sortie->getNom() .").";
+//            $this->addFlash("echecInscriptionSortie", "Vous êtes déjà inscrit(e) à cette sortie");
+            return $this->render('sortie/display.html.twig', [
+                "message" => $message,
+                "entities" => $sorties,
             ]);
         }
-
-
+        elseif ($sortie->getEtat()->getId() != 2 )
+        {
+            $message = "Inscription à cette sortie (". $sortie->getNom() .") clôturée !.";
+        }
 
         $sortie->getUsers()->add($userconnecte);
 
@@ -163,7 +186,8 @@ class SortieController extends Controller
         $this->addFlash("successDesInscription", "Vous êtes bien inscrit(e) à la sortie \" " . $sortie->getNom() . "\" !"   );
 
         return $this->render('sortie/display.html.twig',[
-            "entities" =>$sorties
+            "entities" =>$sorties,
+            "message" => $message
         ]);
     }
 
@@ -174,6 +198,7 @@ class SortieController extends Controller
      */
     public function desInscriptionSortie($id)
     {
+        $message = null;
         $em = $this->getDoctrine()->getManager();
         $sortieRepo = $em->getRepository(Sortie::class);
         $sortie = $sortieRepo->find($id);
@@ -181,26 +206,28 @@ class SortieController extends Controller
 
         $userconnecte = $this->getUser();
 
-//        foreach ($sorties as $s)
-//        {
-//            if (   !$s->getUsers()->contains($userconnecte) )
-//            {
-//                $this->addFlash("echecDesInscriptionSortie", "Vous n'êtes pas inscrit(e) à cette sortie, vous ne pouvez donc pas vous désinscrire");
-//            }
-//
-//            return $this->render('sortie/display.html.twig',[
-//                "entities" =>$sorties
-//            ]);
-//        }
-        $sortie->getUsers()->removeElement($userconnecte);
+        if ( !$sortie->getUsers()->contains($userconnecte)){
+            $message = "Vous n'êtes pas inscrit(e) à cette sortie, vous ne pouvez donc pas vous désinscrire\"";
+            return $this->render('sortie/display.html.twig',[
+                "entities" =>$sorties,
+                "message" => $message
+            ]);
+        }
+        else{
+            $sortie->getUsers()->removeElement($userconnecte);
 
-        $em->flush();
+            $em->flush();
 
-        $this->addFlash("successDesInscription", "Vous êtes bien désinscrit(e) de la sortie \"" . $sortie->getNom() . "\" !");
+            $this->addFlash("successDesInscription", "Vous êtes bien désinscrit(e) de la sortie \" ". $sortie->getNom() . "\" !");
+            return $this->render('sortie/display.html.twig',[
+                "entities" =>$sorties,
+                "message" => $message
+            ]);
+        }
 
-        return $this->render('sortie/display.html.twig',[
-            "entities" =>$sorties
-        ]);
+
+
+
     }
 
 
