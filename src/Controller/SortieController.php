@@ -108,8 +108,8 @@ class SortieController extends Controller
     {
         $repository = $this->getDoctrine()->getRepository(Sortie::class);
         $sortie = $repository->find($id);
-        $userconnecte = $this->getUser();
-//        if (  $sortie->getUsers()->contains($userconnecte) )
+        $userConnecte = $this->getUser();
+//        if (  $sortie->getUsers()->contains($userConnecte) )
 //        {
 //            $this->addFlash("echecInscriptionSortie", "Vous êtes déjà inscrit(e) à cette sortie");
 //        }

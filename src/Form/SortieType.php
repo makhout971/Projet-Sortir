@@ -34,7 +34,7 @@ class SortieType extends AbstractType
             ->add('dateHeureDebut', DateType::class, [
                 'label' => 'Date et heure du début : ',
                 'required' => true,
-                'sfValidatorDate ' => date_timestamp_get()
+//                'sfValidatorDate ' => date_timestamp_get()
 
             ])
 
