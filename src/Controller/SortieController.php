@@ -31,8 +31,12 @@ class SortieController extends Controller
         $e = $etatRepo->find(1);
         $sortie->setEtat($e);
         $sortieForm = $this->createForm(SortieType::class, $sortie);
+
 //        $lieu =new Lieu();
+//        $lieuRepo = $this->getDoctrine()->getRepository(Lieu::class);
+//
 //        $lieuForm = $this->createForm(LieuType::class,$lieu);
+
         //
         $site = $this->getUser()->getSite();
         $sortie->setSite($site);
