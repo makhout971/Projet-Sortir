@@ -172,7 +172,7 @@ class SortieController extends Controller
         {
             $message = "Nombre de participants max atteint pour cette sortie (". $sortie->getNom() .").";
 //            $this->addFlash("echecInscriptionSortie", "Vous êtes déjà inscrit(e) à cette sortie");
-            return $this->render('sortie/display.html.twig', [
+            return  $this->redirectToRoute('afficherSorties', [
                 "message" => $message,
                 "entities" => $sorties,
             ]);
@@ -188,7 +188,7 @@ class SortieController extends Controller
 
         $this->addFlash("successDesInscription", "Vous êtes bien inscrit(e) à la sortie \" " . $sortie->getNom() . "\" !"   );
 
-        return $this->render('sortie/display.html.twig',[
+        return $this->redirectToRoute('afficherSorties',[
             "entities" =>$sorties,
             "message" => $message
         ]);
@@ -211,7 +211,7 @@ class SortieController extends Controller
 
         if ( !$sortie->getUsers()->contains($userconnecte)){
             $message = "Vous n'êtes pas inscrit(e) à cette sortie, vous ne pouvez donc pas vous désinscrire\"";
-            return $this->render('sortie/display.html.twig',[
+            return $this->redirectToRoute('afficherSorties',[
                 "entities" =>$sorties,
                 "message" => $message
             ]);
@@ -222,7 +222,7 @@ class SortieController extends Controller
             $em->flush();
 
             $this->addFlash("successDesInscription", "Vous êtes bien désinscrit(e) de la sortie \" ". $sortie->getNom() . "\" !");
-            return $this->render('sortie/display.html.twig',[
+            return $this->redirectToRoute('afficherSorties',[
                 "entities" =>$sorties,
                 "message" => $message
             ]);
