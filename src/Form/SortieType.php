@@ -9,15 +9,16 @@ use App\Entity\User;
 use App\Entity\Ville;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\FormTypeInterface;
-use Symfony\Component\Validator\Constraints\Date;
 use App\Form\VilleType;
 use App\Form\LieuType;
+
 
 
 class SortieType extends AbstractType
@@ -31,7 +32,7 @@ class SortieType extends AbstractType
                 'required' => true
 
             ])
-            ->add('dateHeureDebut', DateType::class, [
+            ->add('dateHeureDebut', DateTimeType::class, [
                 'label' => 'Date et heure du début : ',
                 'required' => true,
 //                'sfValidatorDate ' => date_timestamp_get()
@@ -43,7 +44,7 @@ class SortieType extends AbstractType
                 'label' => 'Date limite d\'inscription',
 
             ])
-            ->add('dateHeureFin', DateType::class, [
+            ->add('dateHeureFin', DateTimeType::class, [
                 'label' => 'Date et heure de fin'
 
             ])

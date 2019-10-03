@@ -108,14 +108,15 @@ class SortieController extends Controller
     {
         $repository = $this->getDoctrine()->getRepository(Sortie::class);
         $sortie = $repository->find($id);
-        $userConnecte = $this->getUser();
-//        if (  $sortie->getUsers()->contains($userConnecte) )
-//        {
-//            $this->addFlash("echecInscriptionSortie", "Vous êtes déjà inscrit(e) à cette sortie");
-//        }
-//        elseif ( $sortie->getUsers()->count() == $sortie->getNbInscriptionMax() ){
-//            $this->addFlash("palierInscritsMax", "Nombre inscrits max atteint !");
-//        }
+        $userconnecte = $this->getUser();
+
+        if (  $sortie->getUsers()->contains($userconnecte) )
+        {
+            $this->addFlash("echecInscriptionSortie", "Vous êtes déjà inscrit(e) à cette sortie");
+        }
+        elseif ( $sortie->getUsers()->count() == $sortie->getNbInscriptionMax() ){
+            $this->addFlash("palierInscritsMax", "Nombre inscrits max atteint !");
+        }
 
 
         return $this->render('sortie/detail.html.twig', [
@@ -138,20 +139,20 @@ class SortieController extends Controller
         $sortie = $sortieRepo->find($id);
         $sorties = $sortieRepo->findAll();
 
-//        foreach ($sorties as $s)
-//        {
-//            if (   $s->getUsers()->contains($userconnecte) )
-//            {
-//                $this->addFlash("echecInscriptionSortie", "Vous êtes déjà inscrit(e) à cette sortie");
-//            }
-//            elseif ( $s->getUsers()->count() == $s->getNbInscriptionMax() ){
-//                $this->addFlash("palierInscritsMax", "Nombre inscrits max atteint !");
-//            }
-//
-//            return $this->render('sortie/display.html.twig',[
-//                "entities" =>$sorties
-//            ]);
-//        }
+        foreach ($sorties as $s)
+        {
+            if (   $s->getUsers()->contains($userconnecte) )
+            {
+                $this->addFlash("echecInscriptionSortie", "Vous êtes déjà inscrit(e) à cette sortie");
+            }
+            elseif ( $s->getUsers()->count() == $s->getNbInscriptionMax() ){
+                $this->addFlash("palierInscritsMax", "Nombre inscrits max atteint !");
+            }
+
+            return $this->render('sortie/display.html.twig',[
+                "entities" =>$sorties
+            ]);
+        }
 
 
 

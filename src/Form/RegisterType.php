@@ -42,6 +42,7 @@ class RegisterType extends AbstractType
             ->add('tel', TelType::class, [
                 'label' => 'Téléphone : '
 
+
             ])
             ->add('email', EmailType::class, [
                 'label' => 'Email : ',
