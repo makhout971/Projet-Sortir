@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\EtatRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SortieRepository")
@@ -81,7 +82,8 @@ class Sortie
     private $inscriptionOuverte;
 
     /**
-     * ORM\Column(type="integer")
+     * @Assert\Regex(pattern="/^[0-9]*$/", message="Veuillez renseigner un nombre positif")
+     * @ORM\Column(type="integer")
      */
     private $nbInscriptionMax;
 
@@ -129,7 +131,7 @@ class Sortie
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Ville", inversedBy="lieux", cascade={"persist"})
      */
-        private $ville;
+    private $ville;
 
 
     /**
