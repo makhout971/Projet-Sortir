@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\VilleRepository")
@@ -19,13 +20,12 @@ class Ville
 
     /**
      * @ORM\Column(type="string", length=50)
-     * @var
      */
     private $nom;
 
     /**
+     * @Assert\Regex(pattern="/^[0-9]*$/", message="Veuillez renseigner un code postal valide")
      * @ORM\Column(type="integer", length=5)
-     * @var
      */
     private $codePostal;
 
