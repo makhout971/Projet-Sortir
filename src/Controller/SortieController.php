@@ -63,7 +63,7 @@ class SortieController extends Controller
 
 
     /**
-     * @Route("/annuler/{id} ", name="")
+     * @Route("/annuler/{id} ", name="annulerSortie")
      */
     public function supprimerSortie($id, EntityManagerInterface $em)
     {
@@ -72,6 +72,7 @@ class SortieController extends Controller
         $etatRepo = $this->getDoctrine()->getRepository(Etat::class);
         $etatCloture = $etatRepo->find(6);
         $sortie = $sortieRepo->find($id);
+        $sorties = $sortieRepo->findAll();
         $sortie->setEtat($etatCloture);
         $sorties = $sortieRepo->findAll();
 
@@ -79,10 +80,12 @@ class SortieController extends Controller
         $em->persist($sortie);
         $em ->flush();
 
-        $this->addFlash("annulation", "Votre sortie a été annulée");
+     //   $this->addFlash("annulation", "Votre sortie a été annulée");
+        $message = "Votre sortie \"".$sortie->getNom() . "\" a été annulée.";
 
         return $this->render('sortie/display.html.twig', [
-            "message" => $message
+            "message" => $message,
+            "entities" => $sorties
         ]);
     }
 
