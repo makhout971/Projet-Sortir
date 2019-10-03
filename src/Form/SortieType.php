@@ -25,6 +25,10 @@ class SortieType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $defaults = [
+            'dateHeureDebut' => new \DateTime('now'),
+        ];
+
         $builder
 
             ->add('nom', TextType::class, [
@@ -35,6 +39,7 @@ class SortieType extends AbstractType
             ->add('dateHeureDebut', DateTimeType::class, [
                 'label' => 'Date et heure du début : ',
                 'required' => true,
+//                'input' => date('M'),
 
             ])
 
@@ -80,6 +85,8 @@ class SortieType extends AbstractType
             ])
             ;
     }
+
+
 
     public function configureOptions(OptionsResolver $resolver)
     {

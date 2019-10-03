@@ -1,16 +1,19 @@
 {% extends 'layout.html.twig'  %}
 
 {% block body %}
-
-    <script src="{{ asset('js/profil.js') }}"></script>
-    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-
-    <h4>{{ user.username }}</h4>
-    <h4>{{ user.nom }}</h4>
-    <h4>{{ user.prenom }}</h4>
-
-
-
+    <div>
+        <script src="{{ asset('js/profil.js') }}"></script>
+        <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    </div>
+    <H2 style="text-align: center">Profil de {{ user.username }}</H2>
+    <div>
+       <h4><label>Pseudo: </label>{{ user.username }}</h4>
+        <h4><label>Nom: </label>{{ user.nom }}</h4>
+        <h4><label>Prénom: </label>{{ user.prenom }}</h4>
+        <h4><label>Téléphone : </label>{{ user.tel }}</h4>
+        <h4><label>Mail : </label>{{ user.email }}</h4>
+        <h4><label>Ville de rattachement : </label>{{ user.site.nom }}</h4>
+    </div>
 
     {#
     document.getElementById("name").readOnly = true;
@@ -20,10 +23,5 @@
     document.getElementById("name").readOnly = false;
 
     #}
-
-
-
-
-
 
 {% endblock %}

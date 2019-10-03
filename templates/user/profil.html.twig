@@ -2,14 +2,21 @@
 
 {% block body %}
 
-    <script src="{{ asset('js/profil.js') }}"></script>
-    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <div>
+        <script src="{{ asset('js/profil.js') }}"></script>
+        <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    </div>
 
-    {{ form_start(profilForm) }}
-    {{ form_widget(profilForm) }}
-    <input type="submit" value="Valider" id="validate"  name="validate">
+    <div>
+        {{ form_start(profilForm) }}
+        {{ form_widget(profilForm) }}
+        <input type="submit" value="Valider" id="validate"  name="validate">
+        {{ form_end(profilForm) }}
+    </div>
 
-       {{ form_end(profilForm) }}
+
+
+
 
 
 
