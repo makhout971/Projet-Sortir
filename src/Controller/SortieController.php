@@ -171,6 +171,10 @@ class SortieController extends Controller
                 "entities" => $sorties,
             ]);
         }
+        elseif ($sortie->getEtat()->getId() != 2 )
+        {
+            $message = "Inscription à cette sortie (". $sortie->getNom() .") clôturée !.";
+        }
 
         $sortie->getUsers()->add($userconnecte);
 
