@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Etat;
 use App\Entity\Lieu;
+use App\Entity\Site;
 use App\Entity\Sortie;
 use App\Form\LieuType;
 use App\Form\SortieType;
@@ -62,24 +63,21 @@ class SortieController extends Controller
     /**
      * @Route ("/afficher", name="afficherSorties")
      */
-    public function listeSorties()
+    public function listeSorties(Request $request)
     {
         $userDansSortie = false;
         $repository = $this->getDoctrine()->getRepository(Sortie::class);
         $toutesLesSorties = $repository->findAll();
 
-        foreach ($toutesLesSorties as $sortie)
-        {
-            if ($sortie->getUsers()->contains($this->getUser()))
-            {
-                $userDansSortie = true;
-            }
-        }
-dump($toutesLesSorties);
+
+
+
+
+
         return $this->render('sortie/display.html.twig', [
 
             'entities' => $toutesLesSorties,
-            'bool' => $userDansSortie
+
         ]);
     }
 
@@ -106,12 +104,26 @@ dump($toutesLesSorties);
      */
     public function inscriptionSortie($id)
     {
+        $userconnecte = $this->getUser();
+
         $em = $this->getDoctrine()->getManager();
         $sortieRepo = $em->getRepository(Sortie::class);
         $sortie = $sortieRepo->find($id);
         $sorties = $sortieRepo->findAll();
 
-        $userconnecte = $this->getUser();
+        foreach ($sorties as $s)
+        {
+            if (   $s->getUsers()->contains($userconnecte) )
+            {
+                $this->addFlash("echecInscriptionSortie", "Vous êtes déjà inscrit(e) à cette sortie");
+            }
+
+            return $this->render('sortie/display.html.twig',[
+                "entities" =>$sorties
+            ]);
+        }
+
+
 
         $sortie->getUsers()->add($userconnecte);
 
@@ -138,6 +150,17 @@ dump($toutesLesSorties);
 
         $userconnecte = $this->getUser();
 
+        foreach ($sorties as $s)
+        {
+            if (   !$s->getUsers()->contains($userconnecte) )
+            {
+                $this->addFlash("echecDesInscriptionSortie", "Vous n'êtes pas inscrit(e) à cette sortie, vous ne pouvez donc pas vous désinscrire");
+            }
+
+            return $this->render('sortie/display.html.twig',[
+                "entities" =>$sorties
+            ]);
+        }
         $sortie->getUsers()->removeElement($userconnecte);
 
         $em->flush();

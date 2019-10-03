@@ -20,6 +20,18 @@
                 {% if sortie.Users.contains(app.user) %}
                 {% set userInscritSortie = true %}
                 {% endif %}
+                {% for flashMessage in app.session.flashbag.get('echecInscriptionSortie') %}
+                    <div style="color: darkgreen" style="font-weight: bold">
+                        <h2>{{ flashMessage }}</h2>
+                    </div>
+                {%  endfor %}
+                {% for flashMessage in app.session.flashbag.get('echecDesInscriptionSortie') %}
+                    <div style="color: darkgreen" style="font-weight: bold">
+                        <h2>{{ flashMessage }}</h2>
+                    </div>
+                {%  endfor %}
+
+
                 <li>{{ sortie.nom }}</li>
                 <li>{{ sortie.dateHeureDebut.date }}</li>
                 <li>{{ sortie.dateLimiteInscription.date}}</li>
