@@ -1,5 +1,5 @@
 <nav id="nav">
- <div id="navDiv">   <ul id="navUl">
+  <ul id="navUl">
         <li class="navLi"><a class="navLiA" href="{{ path('user_home') }}">Accueil</a></li>
 
         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
@@ -14,7 +14,7 @@
             <li class="navLi"><a class="navLiA" href="{{ path('register') }}">S'inscrire</a></li>
         {% endif %}
 
-    </ul></div>
+    </ul>
 {#    , {'id': app.user.id}#}
 
 </nav>

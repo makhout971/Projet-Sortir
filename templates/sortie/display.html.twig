@@ -57,11 +57,12 @@
 
                 <li> <a href="{{ path('afficherUneSortie',{'id' :  sortie.id}) }}"> Afficher</a> </li>
                {% if  sortie.etat.id == 2 and userInscritSortie==false and sortie.users.count < sortie.nbInscriptionMax %}
-                <li onclick="confirm('Confirmez votre inscription')"> <a href="{{ path('inscriptionSortie',{'id' :  sortie.id}) }}"> S'inscrire</a> </li>
+                <li > <a href="{{ path('inscriptionSortie',{'id' :  sortie.id}) }}"> S'inscrire</a> </li>
+{#                   onclick="confirm('Confirmez votre inscription')"#}
              {% endif %}
                 {% if  sortie.etat.id == 2 and userInscritSortie==true %}
-                    <li onclick="confirm('Confirmez votre désinscription')"> <a href="{{ path('desinscriptionSortie',{'id' :  sortie.id}) }}"> Se désinscrire</a> </li>
-
+                    <li > <a href="{{ path('desinscriptionSortie',{'id' :  sortie.id}) }}"> Se désinscrire</a> </li>
+{#                    onclick="confirm('Confirmez votre désinscription')"#}
 
                 {% endif %}
                 <br>
