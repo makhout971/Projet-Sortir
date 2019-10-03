@@ -1,34 +1,36 @@
 {% extends 'layout.html.twig' %}
 
     {% block body %}
+        <div id="detailSortie">
         <ul>
 
-                <li>{{ sortie.nom }}</li>
-                <li>{{ sortie.dateHeureDebut.date }}</li>
-                <li>{{ sortie.dateLimiteInscription.date}}</li>
-             <li>{{ sortie.infosSortie }}</li>
+            <li><h4>Sortie : </h4>{{ sortie.nom }}</li>
+                <li><h4>Date et Heure de début : </h4>{{ sortie.dateHeureDebut.date }}</li>
+                <li><h4>Date limite d'inscription : </h4>{{ sortie.dateLimiteInscription.date}}</li>
+             <li><h4>Description : </h4>{{ sortie.infosSortie }}</li>
 {#                TODO: chercher nb d'inscrits en base#}
-                <li>{{ sortie.nbInscriptionMax }}</li>
-                <li>{{ sortie.etat.libelle }}</li>
+                <li><h4>Nombre de participants maximum : </h4>{{ sortie.nbInscriptionMax }}</li>
+                <li><h4>Etat de la sortie : </h4>{{ sortie.etat.libelle }}</li>
 {#                TODO: chercher si utilisateur en session inscrit#}
-                <li>{{ sortie.userOrganisateur.username }} </li>
+                <li><h4>Pseudo de l'organisateur</h4>{{ sortie.userOrganisateur.username }} </li>
 
 
 {#                <li> <a href="{{ path('afficherUneSortie',{'id' :  sortie.id}) }}"> Afficher</a> </li>#}
                 <br>
 
         </ul>
-       Listes des participants :
+      <h4> Listes des participants : </h4>
             <br>
             <ul>
                 {% for u in sortie.users %}
                     {% if app.user.id == u.id %}
-                        <li><a href="{{ path('user_profil', {'id': u.id}) }}"> {{ u.username }} </a></li>
+                        <li><h4>Pseudo : </h4><a href="{{ path('user_profil', {'id': u.id}) }}"> {{ u.username }} </a></li>
                     {% else %}
                      <li><a href="{{ path('other_user', {'id': u.id}) }}"> {{ u.username }} </a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
+        </div>
         {% set userInscritSortie = false %}
         {% if sortie.Users.contains(app.user) %}
             {% set userInscritSortie = true %}
