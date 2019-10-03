@@ -44,6 +44,7 @@ class User implements UserInterface
     private $prenom;
 
     /**
+     * @Assert\Regex(pattern="/^[0-9]*$/", message="Veuillez renseigner un numéro de téléphone valide")
      * @ORM\Column(type="integer", length=15)
      */
     private $tel;
