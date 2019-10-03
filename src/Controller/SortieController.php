@@ -117,6 +117,9 @@ class SortieController extends Controller
             {
                 $this->addFlash("echecInscriptionSortie", "Vous êtes déjà inscrit(e) à cette sortie");
             }
+            elseif ( $s->getUsers()->count() == $s->getNbInscriptionMax() ){
+                $this->addFlash("palierInscritsMax", "Nombre inscrits max atteint !");
+            }
 
             return $this->render('sortie/display.html.twig',[
                 "entities" =>$sorties
