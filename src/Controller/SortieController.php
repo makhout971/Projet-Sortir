@@ -202,4 +202,6 @@ class SortieController extends Controller
             "entities" =>$sorties
         ]);
     }
+
+
 }
