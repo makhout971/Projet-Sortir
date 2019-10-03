@@ -1,10 +1,11 @@
 #body {
-
+height: 1000px;
+    margin-top: 100px;
 }
 
 #header
 {
-    background-color: lightblue;
+    background-color: white;
 
 
     font-family: sans-serif;
@@ -15,14 +16,18 @@
 
 #footer
 {
-    background-color: lightblue;
-    position: absolute;
+    background-color: black;
+
     bottom: 0;
     left: 0;
     right: 0;
     height: 100px;
     text-align: center;
-    font-family: sans-serif;
+    font-family: sans-serif bold ;
+    display: block;
+    color: white;
+
+
 
 }
 
@@ -67,14 +72,14 @@ label
 #navUl{
     display: table;
     width: 100%;
-    margin: 100px auto;
+    margin-top: 0px;
     padding: 0;
-    background: linear-gradient(deepskyblue, dodgerblue);
-    background: -webkit-linear-gradient(deepskyblue, dodgerblue);
-    background:    -moz-linear-gradient(deepskyblue, dodgerblue);
-    background:     -ms-linear-gradient(deepskyblue, dodgerblue);
-    background:      -o-linear-gradient(deepskyblue, dodgerblue);
-    background:         linear-gradient(deepskyblue, dodgerblue);
+    background: linear-gradient(black, #17202A  );
+    background: -webkit-linear-gradient(black, #17202A );
+    background:    -moz-linear-gradient(black, #17202A );
+    background:     -ms-linear-gradient(black, #17202A );
+    background:      -o-linear-gradient(black, #17202A );
+    background:         linear-gradient(black, #17202A );
     border-radius: 3px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, .3),
     0 3px 5px rgba(0, 0, 0, .2),
@@ -96,14 +101,15 @@ label
     text-decoration: none;
     padding: 8px 8px 17px 8px;
     text-shadow: 0 1px 0 rgba(255, 255, 255, .4);
-    box-shadow: 0 1px 0 rgba(255, 255, 255, .7) inset,
-    0 -1px 0 hsl(210, 100%, 32%) inset,
-    0 -2px 0 hsl(210, 100%, 38%) inset,
-    0 -3px 0 hsl(210, 100%, 44%) inset,
-    0 -4px 0 hsl(210, 100%, 50%) inset,
-    0 -5px 0 hsl(210, 100%, 60%) inset;
+    box-shadow: 0 1px 0 hsl(210, 9%, 92%) inset,
+    0 -1px 0 rgba(0, 0, 0, .7) inset,
+    0 -2px 0 rgba(0, 0, 0, .7) inset,
+    0 -3px 0 rgba(0, 0, 0, .7) inset,
+    0 -4px 0 rgba(0, 0, 0, .7) inset,
+    0 -5px 0 rgba(0, 0, 0, .7) inset;
     transition: all .3s;
     position: relative;
+    color: white;
 }
 
 
@@ -117,12 +123,12 @@ label
 .navLiA:hover,
 .navLiA:focus{
     background: rgba(255,255,255,.2);
-    box-shadow: 0 1px 0 rgba(255, 255, 255, .7) inset,
-    0 -1px 0 hsl(210, 100%, 42%) inset,
-    0 -2px 0 hsl(210, 100%, 48%) inset,
-    0 -3px 0 hsl(210, 100%, 54%) inset,
-    0 -4px 0 hsl(210, 100%, 60%) inset,
-    0 -5px 0 hsl(210, 100%, 70%) inset;
+    box-shadow: 0 1px 0 hsl(192, 15%, 99%) inset,
+    0 -1px 0 hsl(192, 15%, 95%) inset,
+    0 -2px 0 hsl(192, 15%, 96%) inset,
+    0 -3px 0 hsl(192, 15%, 97%) inset,
+    0 -4px 0 hsl(192, 15%, 99%) inset,
+    0 -5px 0 hsl(192, 15%, 99%) inset;
     padding: 8px 25px 17px 25px;
     transition: padding .3s;
 }
