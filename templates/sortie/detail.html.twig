@@ -2,23 +2,23 @@
 
     {% block body %}
         <div id="detailSortie">
-        <ul>
 
-            <li><h4>Sortie : </h4>{{ sortie.nom }}</li>
-                <li><h4>Date et Heure de début : </h4>{{ sortie.dateHeureDebut.date }}</li>
-                <li><h4>Date limite d'inscription : </h4>{{ sortie.dateLimiteInscription.date}}</li>
-             <li><h4>Description : </h4>{{ sortie.infosSortie }}</li>
+
+           <h4>Sortie : </h4>{{ sortie.nom }}
+             <h4>Date et Heure de début : </h4>{{ sortie.dateHeureDebut.date }}
+                <h4>Date limite d'inscription : </h4>{{ sortie.dateLimiteInscription.date}}
+           <h4>Description : </h4>{{ sortie.infosSortie }}
 {#                TODO: chercher nb d'inscrits en base#}
-                <li><h4>Nombre de participants maximum : </h4>{{ sortie.nbInscriptionMax }}</li>
-                <li><h4>Etat de la sortie : </h4>{{ sortie.etat.libelle }}</li>
+               <h4>Nombre de participants maximum : </h4>{{ sortie.nbInscriptionMax }}
+                <h4>Etat de la sortie : </h4>{{ sortie.etat.libelle }}
 {#                TODO: chercher si utilisateur en session inscrit#}
-                <li><h4>Pseudo de l'organisateur</h4>{{ sortie.userOrganisateur.username }} </li>
+                <h4>Pseudo de l'organisateur</h4>{{ sortie.userOrganisateur.username }}
 
 
 {#                <li> <a href="{{ path('afficherUneSortie',{'id' :  sortie.id}) }}"> Afficher</a> </li>#}
                 <br>
 
-        </ul>
+       
       <h4> Listes des participants : </h4>
             <br>
             <ul>
@@ -36,11 +36,11 @@
             {% set userInscritSortie = true %}
         {% endif %}
         {% if  sortie.etat.id == 2 and userInscritSortie==false and sortie.users.count < sortie.nbInscriptionMax %}
-            <li > <a href="{{ path('inscriptionSortie',{'id' :  sortie.id}) }}"> S'inscrire</a> </li>
+            <a href="{{ path('inscriptionSortie',{'id' :  sortie.id}) }}"> S'inscrire</a>
 {#            onclick="confirm('Confirmez votre inscription')"#}
         {% endif %}
         {% if  sortie.etat.id == 2 and userInscritSortie==true %}
-            <li > <a href="{{ path('desinscriptionSortie',{'id' :  sortie.id}) }}"> Se désinscrire</a> </li>
+            <a href="{{ path('desinscriptionSortie',{'id' :  sortie.id}) }}"> Se désinscrire</a>
 {#            onclick="confirm('Confirmez votre désinscription')"#}
         {% endif %}
 
