@@ -1,23 +1,24 @@
 #body {
 height: 100%;
     margin-top: 100px;
+    text-align: center;
+
 }
 
 #header
 {
     background-color: white;
-
-
     font-family: sans-serif;
     text-align: center;
-
-
+    width:90%;
+    margin:auto;
 }
 
 #footer
 {
     background-color: black;
-    position: relative;
+    width:85%;
+    margin:auto;
     bottom: 0;
     left: 0;
     right: 0;
@@ -31,7 +32,13 @@ height: 100%;
 
 }
 
+#contenu{
+    height:600px;
+}
 
+#contenuRegister{
+    height: 600px;
+}
 a
 {
     text-decoration: none;
@@ -63,7 +70,8 @@ label
 {
     width: 150px;
     border-radius: 3px;
-    margin-left: 200px;
+    margin-left: 100px;
+    margin-bottom: 15%;
     margin-top: 20px;
 }
 
@@ -165,6 +173,7 @@ label
     margin-right: 20%;
     text-align: center;
     padding: 1%;
+    margin-bottom: 25%;
 
 }
 

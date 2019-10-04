@@ -3,12 +3,13 @@
 {% block title %}Inscription | {{ parent() }}{% endblock %}
 
 {% block body %}
+    <div id="contenuRegister">
 
     {{ form_start(registerForm) }}
     {{ form_widget(registerForm) }}
     <button id="btnRegister" type="submit">Je m'inscris!</button>
     {{ form_end(registerForm) }}
 
-
+    </div>
 {% endblock %}
 
