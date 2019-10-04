@@ -143,6 +143,7 @@ class Sortie
 
         $e = new Etat();
         $e->setLibelle('Ouverte');
+
         $this->etat = $e;
         $inscriptionOuverte = false;
 

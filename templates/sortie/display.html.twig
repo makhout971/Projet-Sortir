@@ -16,7 +16,7 @@
             <h1>{{ message }}</h1>
         {% endif %}
         <div id="lesSorties">
-        <ul>
+
 
             {% for sortie in entities %}
                 {% if sortie.etat.id != 6  %}
@@ -41,34 +41,35 @@
 {#                {%  endfor %}#}
 
 
+                <div id="uneSortie">
 
 
-
-                <li><h5>Nom de la sortie : </h5>{{ sortie.nom }}</li>
-                <li><h5>Date et heure de début : </h5>{{ sortie.dateHeureDebut.date }}</li>
-                <li><h5>Date limite d'inscription : </h5>{{ sortie.dateLimiteInscription.date}}</li>
+                <h5>Nom de la sortie : </h5>{{ sortie.nom }}
+                <h5>Date et heure de début : </h5>{{ sortie.dateHeureDebut.date }}
+                <h5>Date limite d'inscription : </h5>{{ sortie.dateLimiteInscription.date}}
 {#                <li>{{ (sortie.dateHeureDebut)-(sortie.dateHeureFin) }}</li>#}
 {#                TODO: chercher nb d'inscrits en base#}
-                <li><h5>Nombre de participants maximum</h5>{{ sortie.nbInscriptionMax }}</li>
-                <li><h5>Etat de la sortie : </h5>{{ sortie.etat.libelle }}</li>
+                <h5>Nombre de participants maximum :</h5>{{ sortie.nbInscriptionMax }}
+                <h5>Etat de la sortie : </h5>{{ sortie.etat.libelle }}
 {#                TODO: chercher si utilisateur en session inscrit#}
-                <li><h5>Pseudo de l'organisateur</h5>{{ sortie.userOrganisateur.username }} </li>
+                <h5>Pseudo de l'organisateur</h5>{{ sortie.userOrganisateur.username }}
 
-
-                <li> <a href="{{ path('afficherUneSortie',{'id' :  sortie.id}) }}"> Afficher</a> </li>
+                    <br>
+                 <a href="{{ path('afficherUneSortie',{'id' :  sortie.id}) }}"> Afficher</a>
                {% if  sortie.etat.id == 2 and userInscritSortie==false and sortie.users.count < sortie.nbInscriptionMax %}
-                <li > <a href="{{ path('inscriptionSortie',{'id' :  sortie.id}) }}"> S'inscrire</a> </li>
-{#                   onclick="confirm('Confirmez votre inscription')"#}
+                 <a href="{{ path('inscriptionSortie',{'id' :  sortie.id}) }}"> S'inscrire</a>
+
              {% endif %}
                 {% if  sortie.etat.id == 2 and userInscritSortie==true %}
-                    <li > <a href="{{ path('desinscriptionSortie',{'id' :  sortie.id}) }}"> Se désinscrire</a> </li>
-{#                    onclick="confirm('Confirmez votre désinscription')"#}
+                     <a href="{{ path('desinscriptionSortie',{'id' :  sortie.id}) }}"> Se désinscrire</a>
+
 
                 {% endif %}
                 <br>
+                </div>
                {% endif %}
+
             {% endfor %}
-        </ul>
 
 
         <button id="btnLesSorties"><a  href="{{ path('sortie') }}">Créer une sortie</a></button>

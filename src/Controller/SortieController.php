@@ -28,7 +28,7 @@ class SortieController extends Controller
         $sortie = new Sortie();
         $sortie->setInscriptionOuverte(true);
         $etatRepo = $this->getDoctrine()->getRepository(Etat::class);
-        $e = $etatRepo->find(1);
+        $e = $etatRepo->find(2);
         $sortie->setEtat($e);
         $sortieForm = $this->createForm(SortieType::class, $sortie);
 
