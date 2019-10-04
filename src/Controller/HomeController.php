@@ -30,25 +30,26 @@ class HomeController extends Controller
         return $this->render('user/home.html.twig', [
             'users' => $users,
             'entities' => $toutesLesSorties,
-            'message' => $message
+            'message' => $message,
+            'sorties' => $sorties
         ]);
     }
 
 
-    /**
-     * @Route("/afficher", name="afficherSorties")
-     */
-    public function listeSorties()
-    {
-        $repository = $this->getDoctrine()->getRepository(Sortie::class);
-        $toutesLesSorties = $repository->findAll();
-        $home =
-        $formHome = $this->createForm(HomeType::class, $home);
-        return $this->render('user/home.html.twig', [
-
-            'entities' => $toutesLesSorties
-        ]);
-    }
+//    /**
+//     * @Route("/afficher", name="afficherSorties")
+//     */
+//    public function listeSorties()
+//    {
+//        $repository = $this->getDoctrine()->getRepository(Sortie::class);
+//        $toutesLesSorties = $repository->findAll();
+//        $home =
+//        $formHome = $this->createForm(HomeType::class, $home);
+//        return $this->render('user/home.html.twig', [
+//
+//            'entities' => $toutesLesSorties
+//        ]);
+//    }
 
 
 }

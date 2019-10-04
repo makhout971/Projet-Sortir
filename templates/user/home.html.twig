@@ -29,7 +29,7 @@
 
     {% endif %}
 
-
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
         {% for flashMessage in app.session.flashbag.get('successInscription') %}
             <div style="color: darkgreen" style="font-weight: bold">
                 <h2>{{ flashMessage }}</h2>
@@ -103,6 +103,7 @@
 
             <button id="btnLesSorties"><a  href="{{ path('sortie') }}">Créer une sortie</a></button>
         </div>
+    {% endif %}
 
 
 {% endblock %}
