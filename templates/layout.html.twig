@@ -49,11 +49,13 @@
 
 
 
-<footer id="footer">
+{%  block footer %}
 
-    &copy;{{ "now"|date("Y") }} Sortir.com by PLS
-</footer>
+    <footer id="footer">
 
+        &copy;{{ "now"|date("Y") }} Sortir.com by PLS
+    </footer>
+{% endblock %}
 </body>
 
 </html>
