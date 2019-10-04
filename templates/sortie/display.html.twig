@@ -52,8 +52,8 @@
                 <h5>Nombre de participants maximum :</h5>{{ sortie.nbInscriptionMax }}
                 <h5>Etat de la sortie : </h5>{{ sortie.etat.libelle }}
 {#                TODO: chercher si utilisateur en session inscrit#}
-                <h5>Pseudo de l'organisateur</h5>{{ sortie.userOrganisateur.username }}
-
+                <h5>Organisateur : </h5>{{ sortie.userOrganisateur.username }}
+                    <br>
                     <br>
                  <a href="{{ path('afficherUneSortie',{'id' :  sortie.id}) }}"> Afficher</a>
                {% if  sortie.etat.id == 2 and userInscritSortie==false and sortie.users.count < sortie.nbInscriptionMax %}

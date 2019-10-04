@@ -1,5 +1,5 @@
 #body {
-height: 1500px;
+height: 100%;
     margin-top: 100px;
 }
 
@@ -179,6 +179,7 @@ label
     margin-top: 2%;
     border-radius: 3px;
     height: 30px;
+    margin-bottom: 5%;
 }
 
 #lesSorties
@@ -193,6 +194,8 @@ label
     margin-top: 2%;
     border-radius: 3px;
     height: 30px;
+    margin-left: 45%;
+    margin-bottom: 5%;
 }
 
 #detailSortie
@@ -201,3 +204,18 @@ label
 
 }
 
+#uneSortie
+{
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-bottom: 10px;
+    border: 2px solid black;
+    padding: 1%;
+    text-align: center;
+
+}
+
+#fond
+{
+    background-size: auto;
+}
