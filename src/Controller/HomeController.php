@@ -15,18 +15,22 @@ class HomeController extends Controller
      */
     public function home()
     {
+        $message = null;
         $userRepo = $this->getDoctrine()->getRepository(User::class);
         $sortieRepo = $this->getDoctrine()->getRepository(Sortie::class);
+
+        $toutesLesSorties = $sortieRepo->findAll();
 
         $users = $userRepo->totalUsersInscrits();
         $sorties = $sortieRepo->totalSortiesOrganisees();
 
-        dump($users);
-        dump($sorties);
+//        dump($users);
+//        dump($sorties);
 
         return $this->render('user/home.html.twig', [
             'users' => $users,
-            'sorties' => $sorties,
+            'entities' => $toutesLesSorties,
+            'message' => $message
         ]);
     }
 
